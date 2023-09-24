@@ -1,13 +1,13 @@
 import React from "react";
 
-function Logo({ props }) {
+function Logo(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 197 49"
       fill="none"
-      width="auto"
       height="auto"
+      width={props?.height * 4 || "auto"}
       {...props}
     >
       <path

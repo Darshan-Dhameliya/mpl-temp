@@ -4,14 +4,15 @@ import React from "react";
 import FlagImg from "@/assets/flag.png";
 import Image from "next/image";
 import Menu from "@/assets/svg/Menu";
-console.log(FlagImg);
+import { useRouter } from "next/router";
 
-const Navbar = ({ openSidebar, openLogin }) => {
+const Navbar = ({ openSidebar, openLogin, openRegsiter }) => {
+  const router = useRouter();
   return (
-    <nav className="bg-darkPrimary px-8 h-16 flex items-center justify-between">
+    <nav className="bg-darkPrimary z-40 fixed left-0 right-0 px-8 h-16 flex items-center justify-between">
       <div className="h-9 space-x-2 flex items-center">
         <Menu onClick={openSidebar} />
-        <Logo />
+        <Logo onClick={() => router.push("/")} className="cursor-pointer" />
       </div>
       <div className="space-x-4 h-10 py-4 flex items-center">
         <button
@@ -20,7 +21,10 @@ const Navbar = ({ openSidebar, openLogin }) => {
         >
           Sign In
         </button>
-        <button className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white">
+        <button
+          onClick={openRegsiter}
+          className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
+        >
           Registration
         </button>
         <div className="border-l border-gray-600 h-8" />
