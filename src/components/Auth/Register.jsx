@@ -11,12 +11,13 @@ import EmailIcon from "@/assets/svg/EmailIcon";
 import PhoneIcon from "@/assets/svg/PhoneIcon";
 import CloseIcon from "@/assets/svg/CloseIcon";
 
-export default function MyModal({ isOpen, onClose }) {
+export default function MyModal({ isOpen, onClose, openLogin }) {
   const [selectedMethod, setSelectedMethod] = useState("email");
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
+          key="1"
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -167,7 +168,13 @@ export default function MyModal({ isOpen, onClose }) {
                         </Button>
                         <span className="text-[#626778] text-md">
                           Already habe Account ?{" "}
-                          <span className="text-[#2C8CF2]">Sign in</span>
+                          <span
+                            role="button"
+                            className="text-[#2C8CF2]"
+                            onClick={openLogin}
+                          >
+                            Sign in
+                          </span>
                         </span>
                         <div className="flex flex-row items-center justify-center space-x-2">
                           <div className="w-24 h-px bg-[#626778] " />

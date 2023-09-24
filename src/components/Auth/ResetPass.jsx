@@ -6,7 +6,7 @@ import Image from "next/image";
 import Plus from "@/assets/svg/18Plus";
 import CloseIcon from "@/assets/svg/CloseIcon";
 
-export default function ResetPass({ isOpen, onClose }) {
+export default function ResetPass({ isOpen, onClose, openRegsiter }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -94,7 +94,11 @@ export default function ResetPass({ isOpen, onClose }) {
                           </Button>
                           <span className="text-[#626778] text-md">
                             New to Casino?{" "}
-                            <span className="text-[#2C8CF2]">
+                            <span
+                              role="button"
+                              className="text-[#2C8CF2]"
+                              onClick={openRegsiter}
+                            >
                               Create Account
                             </span>
                           </span>

@@ -7,8 +7,9 @@ import Image from "next/image";
 import Plus from "@/assets/svg/18Plus";
 import PasswordFied from "../@core/PasswordFied";
 import CloseIcon from "@/assets/svg/CloseIcon";
+import Link from "next/link";
 
-export default function Login({ isOpen, onClose }) {
+export default function Login({ isOpen, onClose, openRestPass, openRegsiter }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -99,7 +100,11 @@ export default function Login({ isOpen, onClose }) {
                               background: "#212530",
                             }}
                           />
-                          <span className="self-end text-white">
+                          <span
+                            role="button"
+                            className="self-end text-white"
+                            onClick={openRestPass}
+                          >
                             Forgot your password?
                           </span>
                           <Button className="mt-2" variant="primary">
@@ -107,7 +112,11 @@ export default function Login({ isOpen, onClose }) {
                           </Button>
                           <span className="text-[#626778] text-md">
                             New to Casino?{" "}
-                            <span className="text-[#2C8CF2]">
+                            <span
+                              role="button"
+                              className="text-[#2C8CF2] cursor-pointer"
+                              onClick={openRegsiter}
+                            >
                               Create Account
                             </span>
                           </span>

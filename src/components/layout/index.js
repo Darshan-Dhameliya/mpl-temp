@@ -23,6 +23,12 @@ const Layout = ({ children }) => {
     close: closeRegsiter,
   } = useDisclose(false);
 
+  const {
+    isOpen: isRestPassOpen,
+    open: openRestPass,
+    close: closeRestPass,
+  } = useDisclose(false);
+
   return (
     <>
       <Appbar
@@ -48,9 +54,34 @@ const Layout = ({ children }) => {
           </main>
           <Footer />
         </div>
-        <LoginModal isOpen={isLoginOpen} onClose={closeLogin} />
-        <Registerodal isOpen={isRegsiterOpen} onClose={closeRegsiter} />
-        {/* <ResetPass isOpen={isLoginOpen} onClose={closeLogin} /> */}
+        <LoginModal
+          isOpen={isLoginOpen}
+          onClose={closeLogin}
+          openRegsiter={() => {
+            closeRegsiter();
+            openRegsiter();
+          }}
+          openRestPass={() => {
+            closeRegsiter();
+            openRestPass();
+          }}
+        />
+        <Registerodal
+          isOpen={isRegsiterOpen}
+          openLogin={() => {
+            closeRegsiter();
+            openLogin();
+          }}
+          onClose={closeRegsiter}
+        />
+        <ResetPass
+          isOpen={isRestPassOpen}
+          onClose={closeRestPass}
+          openRegsiter={() => {
+            closeRegsiter();
+            openRegsiter();
+          }}
+        />
       </div>
     </>
   );
