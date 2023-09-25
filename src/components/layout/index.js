@@ -1,3 +1,4 @@
+import useWindowSize from "@/helper/useWindowSize";
 import LoginModal from "../Auth/Login";
 import Registerodal from "../Auth/Register";
 import ResetPass from "../Auth/ResetPass";
@@ -5,6 +6,8 @@ import Appbar from "./Appbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import useDisclose from "@/helper/useDisclose";
+import { useMemo } from "react";
+import NotificationDrawer from "./NotificationDrawer";
 
 const Layout = ({ children }) => {
   const {
@@ -22,18 +25,30 @@ const Layout = ({ children }) => {
     open: openRegsiter,
     close: closeRegsiter,
   } = useDisclose(false);
-
   const {
     isOpen: isRestPassOpen,
     open: openRestPass,
     close: closeRestPass,
   } = useDisclose(false);
 
+  const {
+    isOpen: isNotificationOpen,
+    open: openNotification,
+    close: closeNotification,
+  } = useDisclose(false);
+
+  const { width } = useWindowSize();
+  useMemo(() => {
+    if (width < 1024 && isSidebarOpen) closeSidebar();
+    else if (width >= 1024 && !isSidebarOpen) openSidebar();
+  }, [width]);
+
   return (
     <>
       <Appbar
         openSidebar={openSidebar}
         openLogin={openLogin}
+        openNotification={openNotification}
         openRegsiter={openRegsiter}
       />
       <div
@@ -54,6 +69,10 @@ const Layout = ({ children }) => {
           </main>
           <Footer />
         </div>
+        <NotificationDrawer
+          isOpen={isNotificationOpen}
+          onClose={closeNotification}
+        />
         <LoginModal
           isOpen={isLoginOpen}
           onClose={closeLogin}

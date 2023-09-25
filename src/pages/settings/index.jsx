@@ -88,9 +88,10 @@ export default function Setting() {
             { id: 5, name: "Session History" },
           ].map((item) => (
             <div
+              role="button"
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""
-              } cursor-pointer py-2 px-3 rounded-lg hover:text-white`}
+              }  py-2 px-3 rounded-lg hover:text-white`}
               onClick={chnageActiveidAndCloseDropdown(item.id)}
             >
               {item.name}
