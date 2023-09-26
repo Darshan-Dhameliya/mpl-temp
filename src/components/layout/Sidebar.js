@@ -79,7 +79,11 @@ const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
     >
       <nav className="flex-col  flex justify-between content-between h-full  ">
         <div className="flex-col mt-8 gap-y-1 flex justify-center">
-          <div className="flex items-center justify-between rounded-xl mx-4 px-3 py-3 bg-gradient-to-r from-red-500 to-pink-600">
+          <div
+            role="button"
+            onClick={() => router.push("/favorite")}
+            className="flex items-center justify-between rounded-xl mx-4 px-3 py-3 bg-gradient-to-r from-red-500 to-pink-600"
+          >
             <div className="flex items-center gap-2 text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
