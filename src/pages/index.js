@@ -66,7 +66,7 @@ export default function Home() {
             Sign Up &<span className="text-[#3DDC80]"> Get</span> Reward
           </div>
           <div className="text-white text-7xl font-bold">
-            UP TO <span className="text-[#3DDC80]">$ 17,000</span>
+            UP TO <span className="text-[#3DDC80]">$ 18,000</span>
           </div>
           <div className="flex flex-row gap-3 items-center">
             <Button className="py-3 rounded-xl" variant="primary">
