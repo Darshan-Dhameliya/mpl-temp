@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import BitCoin from "@/assets/svg/siderbar/BitCoin";
 import Button from "../@core/Button";
 import NotificationIcon from "@/assets/svg/siderbar/NotificationIcon";
-import SearchIcon from "@/assets/svg/SearchIcon";
 import SearchField from "../@core/SearchField";
 
 const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {

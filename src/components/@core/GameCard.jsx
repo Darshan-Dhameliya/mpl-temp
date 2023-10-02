@@ -9,8 +9,8 @@ export default function GameCard(props) {
         border: "2px solid #444B5B",
         background: "linear-gradient(180deg, #333947 0%, #2C3240 100%)",
         height: 250,
-        width: "calc(100% - 16px)", // Adjust the width and margin accordingly
-        margin: "8px", // Add margin to separate the cards
+        width: "calc(100% - 8px)", // Adjust the width and margin accordingly
+        margin: "4px", // Add margin to separate the cards
       }}
       className="flex items-center justify-center"
     >

@@ -23,12 +23,12 @@ import Profile from "@/assets/svg/siderbar/Profile";
 const navigation = [
   {
     title: "Affiliate",
-    href: "",
+    href: "/affiliate",
     icon: (props) => <Affiliate {...props} />,
   },
   {
     title: "VIP Club",
-    href: "",
+    href: "/vipclub",
     icon: (props) => <VIPClub {...props} />,
   },
   {
@@ -43,7 +43,7 @@ const navigation = [
   },
   {
     title: "Leaderboard",
-    href: "leaderboard",
+    href: "/leaderboard",
     icon: (props) => <Leaderboard {...props} />,
   },
   {
