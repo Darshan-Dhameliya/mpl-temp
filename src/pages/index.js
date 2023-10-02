@@ -11,6 +11,7 @@ import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import Table from "@/components/@core/Table";
 import Game from "@/components/carsoul/game";
 import { useStore } from "@/context";
+import SecureSection from "@/helper/SecureSection";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -142,11 +143,13 @@ export default function Home() {
           </div>
         </div>
       )}
-      <div className="h-64 mt-5">
-        <div className="bg-darkPrimary h-full flex justify-center items-center">
-          slider for games/advertisement
+      <SecureSection>
+        <div className="h-64 mt-5">
+          <div className="bg-darkPrimary h-full flex justify-center items-center">
+            slider for games/advertisement
+          </div>
         </div>
-      </div>
+      </SecureSection>
       {/* menubar */}
       <div className="bg-[#212530] w-full flex flex-row justify-between z-20 border-[#2E323D] border rounded-full p-3">
         {menubar.map((item) => (
