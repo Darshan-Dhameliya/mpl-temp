@@ -50,15 +50,16 @@ const Carousel = ({ items, title }) => {
         </div>
       </div>
       <div
-        className="carousel flex flex-row overflow-hidden overflow-y-hidden"
+        className="carousel flex overflow-hidden overflow-y-hidden"
         ref={carouselRef}
       >
         {items.map((item, index) => (
           <div
-            className="w-1/2  sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/5 "
+            className="w-1/2 sm:w-1/3  md:w-1/4s lg:w-1/4 xl:w-1/4 " // Adjusted width here
             key={index}
+            data-index={index}
           >
-            <GameCard index={index} />
+            <GameCard imgUrl={item?.imgPath} index={index} width={250} />
           </div>
         ))}
       </div>

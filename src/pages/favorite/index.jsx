@@ -1,9 +1,33 @@
+import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import GameCard from "@/components/@core/GameCard";
 import SearchField from "@/components/@core/SearchField";
 import Table from "@/components/@core/Table";
 import React from "react";
 
 export default function Favorite() {
+  const imagedata = [
+    {
+      imgPath: require("../../assets/games/1_Skull_Fiesta.png"),
+    },
+    {
+      imgPath: require("../../assets/games/2_Duck_Trap.png"),
+    },
+    {
+      imgPath: require("../../assets/games/3_Fishing_Fantasy.png"),
+    },
+    {
+      imgPath: require("../../assets/games/4_Auspicious_Easter.png"),
+    },
+    {
+      imgPath: require("../../assets/games/5_TOW.png"),
+    },
+    {
+      imgPath: require("../../assets/games/6_Aladdin_Emperors.png"),
+    },
+    {
+      imgPath: require("../../assets/games/7_Lucky_Jungle.png"),
+    },
+  ];
   return (
     <>
       <div className="flex items-center gap-2 mt-4 m text-white">
@@ -23,17 +47,20 @@ export default function Favorite() {
       </div>
       <SearchField className="w-full my-5 h-12" iconSize={24} />
       <div className="flex flex-row flex-wrap">
-        {new Array(12).fill().map((_, index) => (
+        {imagedata.map((item, index) => (
           <div
             className="w-1/2 p-2 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/5 "
             key={index}
           >
-            <GameCard />
+            <GameCard imgUrl={item.imgPath} />
           </div>
         ))}
       </div>
-
       <div className="mt-4">
+        <div className="text-light m-4 flex items-center gap-2 text-white">
+          <Leaderboard />
+          <div className="text-2xl bold">Leaderboard</div>
+        </div>
         <Table />
       </div>
     </>

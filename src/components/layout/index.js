@@ -9,6 +9,9 @@ import useDisclose from "@/helper/useDisclose";
 import { useMemo } from "react";
 import NotificationDrawer from "./NotificationDrawer";
 import MyTabNavigator from "./TabNavigator";
+import LiveChat from "./LiveChat";
+import Deposit from "./Deposit";
+import Withdraw from "./Withdraw";
 
 const Layout = ({ children }) => {
   const {
@@ -75,6 +78,9 @@ const Layout = ({ children }) => {
           isOpen={isNotificationOpen}
           onClose={closeNotification}
         />
+        <LiveChat />
+        <Deposit />
+        <Withdraw />
         <LoginModal
           isOpen={isLoginOpen}
           onClose={closeLogin}

@@ -9,10 +9,12 @@ import BitCoin from "@/assets/svg/siderbar/BitCoin";
 import Button from "../@core/Button";
 import NotificationIcon from "@/assets/svg/siderbar/NotificationIcon";
 import SearchField from "../@core/SearchField";
+import { useStore } from "@/context";
 
 const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {
   const router = useRouter();
-  const isloggedin = false;
+  const { isloggedin } = useStore();
+
   return (
     <nav className="bg-darkPrimary z-40 fixed left-0 right-0 px-8 h-16 flex items-center justify-between">
       <div className="lg:gap-16 justify-between  flex-row flex items-center">
@@ -27,27 +29,6 @@ const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {
       </div>
       <div className="space-x-4 lg:flex hidden h-10 py-4  items-center">
         {isloggedin ? (
-          <>
-            <button
-              onClick={openLogin}
-              className="px-8 font-semibold uppercase py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white"
-            >
-              Sign In
-            </button>
-            <button
-              onClick={openRegsiter}
-              className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
-            >
-              Registration
-            </button>
-            <div className="border-l border-gray-600 h-8" />
-            <Image
-              src={FlagImg}
-              alt="Your Image"
-              className="rounded-full w-8 h-8"
-            />
-          </>
-        ) : (
           <>
             <div
               role="button"
@@ -75,6 +56,27 @@ const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {
               showDot={false}
               onClick={openNotification}
             />
+            <div className="border-l border-gray-600 h-8" />
+            <Image
+              src={FlagImg}
+              alt="Your Image"
+              className="rounded-full w-8 h-8"
+            />
+          </>
+        ) : (
+          <>
+            <button
+              onClick={openLogin}
+              className="px-8 font-semibold uppercase py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={openRegsiter}
+              className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
+            >
+              Registration
+            </button>
             <div className="border-l border-gray-600 h-8" />
             <Image
               src={FlagImg}

@@ -8,8 +8,17 @@ import Plus from "@/assets/svg/18Plus";
 import PasswordFied from "../@core/PasswordFied";
 import CloseIcon from "@/assets/svg/CloseIcon";
 import Link from "next/link";
+import { useDispatch } from "@/context";
 
 export default function Login({ isOpen, onClose, openRestPass, openRegsiter }) {
+  const dispatch = useDispatch();
+  const handleSignIn = () => {
+    onClose();
+    dispatch({
+      type: "USER_LOGIN",
+    });
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -107,7 +116,11 @@ export default function Login({ isOpen, onClose, openRestPass, openRegsiter }) {
                           >
                             Forgot your password?
                           </span>
-                          <Button className="mt-2" variant="primary">
+                          <Button
+                            className="mt-2"
+                            variant="primary"
+                            onClick={handleSignIn}
+                          >
                             Sign In
                           </Button>
                           <span className="text-[#626778] text-md">

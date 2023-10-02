@@ -8,6 +8,8 @@ import PrivacyPolicy from "@/components/settings/privacyPolicy";
 import Security from "@/components/settings/security";
 import SessionHistory from "@/components/settings/SessionHistory";
 import TermsAndCondition from "@/components/settings/termsAndCondition";
+import { useDispatch } from "@/context";
+import SecureSection from "@/helper/SecureSection";
 import useDisclose from "@/helper/useDisclose";
 import React, { useState } from "react";
 
@@ -22,6 +24,13 @@ export default function Setting() {
   const chnageActiveidAndCloseDropdown = (num) => () => {
     setactiveId(num);
     closeMenu();
+  };
+
+  const dispatch = useDispatch();
+  const handleSignOut = () => {
+    dispatch({
+      type: "USER_LOGOUT",
+    });
   };
 
   return (
@@ -97,16 +106,20 @@ export default function Setting() {
               {item.name}
             </div>
           ))}
-          <div
-            className="text-white font-bold flex flex-row  items-center gap-3 cursor-pointer py-2 px-3 rounded-lg"
-            style={{
-              background:
-                "linear-gradient(90deg, #363E50 0.17%, #353C4B 99.83%)",
-              boxShadow: "0px 1px 0px 0px #303647 inset",
-            }}
-          >
-            <Logout width={16} /> Log out
-          </div>
+          <SecureSection>
+            <div
+              className="text-white font-bold flex flex-row  items-center gap-3 cursor-pointer py-2 px-3 rounded-lg"
+              style={{
+                background:
+                  "linear-gradient(90deg, #363E50 0.17%, #353C4B 99.83%)",
+                boxShadow: "0px 1px 0px 0px #303647 inset",
+              }}
+              role="button"
+              onClick={handleSignOut}
+            >
+              <Logout width={16} /> Log out
+            </div>
+          </SecureSection>
         </div>
         <div
           class="col-span-3 h-fit rounded-lg p-8 text-[#80879A]"
