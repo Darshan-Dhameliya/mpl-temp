@@ -12,6 +12,13 @@ import Settings from "@/assets/svg/siderbar/Setting";
 import { useState } from "react";
 import SupportSytem from "@/assets/svg/siderbar/SupportSytem";
 import { useRouter } from "next/router";
+import useDisclose from "@/helper/useDisclose";
+import DropDownIcon from "@/assets/svg/DropDownIcon";
+import AddCash from "@/assets/svg/siderbar/AddCash";
+import Promocode from "@/assets/svg/siderbar/Promocode";
+import ManageBenificiary from "@/assets/svg/siderbar/ManageBenificiary";
+import AddBenificiary from "@/assets/svg/siderbar/AddBenificiary";
+import Profile from "@/assets/svg/siderbar/Profile";
 
 const navigation = [
   {
@@ -61,6 +68,34 @@ const navigation = [
   },
 ];
 
+const profileDropDown = [
+  {
+    title: "Wallet",
+    href: "",
+    icon: (props) => <Deposit {...props} />,
+  },
+  {
+    title: "Add Cash",
+    href: "",
+    icon: (props) => <AddCash {...props} />,
+  },
+  {
+    title: "Apply promocode",
+    href: "",
+    icon: (props) => <Promocode {...props} />,
+  },
+  {
+    title: "Manage Beneficiary",
+    href: "",
+    icon: (props) => <ManageBenificiary {...props} />,
+  },
+  {
+    title: "Add Beneficiary",
+    href: "",
+    icon: (props) => <AddBenificiary {...props} />,
+  },
+];
+
 const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
   const router = useRouter();
   const [active, setActive] = useState(-1);
@@ -71,6 +106,11 @@ const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
       )
     );
   };
+  const {
+    isOpen: isMenuOpen,
+    toggle: toggleMenu,
+    close: closeMenu,
+  } = useDisclose(false);
   return (
     <aside
       className={`w-64 bg-darkSecondary mt-16  sidebar-sahdow text-white fixed inset-0  transform ${
@@ -129,6 +169,55 @@ const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
             </svg>
             Recently Played
           </div>
+
+          <div
+            className={`${
+              isMenuOpen ? "text-[#fff] bg-[#292D38]" : "text-[#80879A]"
+            } select-none hs-collapse-toggle cursor-pointer overflow-hidden`}
+          >
+            <div className="flex py-2 px-3 justify-between">
+              <div className="flex flex-row gap-3">
+                <Profile height={24} width={24} />
+                Profile
+              </div>
+              <DropDownIcon
+                size={24}
+                className={`transition-transform hs-collapse-toggle ${
+                  isMenuOpen ? "rotate-90" : "rotate-0"
+                }`}
+                onClick={toggleMenu}
+              />
+            </div>
+            <div
+              className={`${
+                isMenuOpen ? "h-auto" : "h-0"
+              } overflow-hidden transition-all`}
+            >
+              {profileDropDown.map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveRoute(item.title);
+                    router.push(item?.href);
+                  }}
+                  className={`ms-2 gap-4 ${
+                    active === idx ? "bg-[#292D38]" : "bg-inherit"
+                  } hover:bg-[#292D38] cursor-pointer px-4 py-1 flex-row items-center flex text-base`}
+                >
+                  {item.icon({
+                    height: 16,
+                    width: 16,
+                  })}
+                  <span
+                    className={`${"text-[#80879A]"} font-bold hover:text-white`}
+                  >
+                    {item.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {navigation.map((item, idx) => (
             <div
               onClick={() => {

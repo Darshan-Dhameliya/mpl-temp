@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar";
 import useDisclose from "@/helper/useDisclose";
 import { useMemo } from "react";
 import NotificationDrawer from "./NotificationDrawer";
+import MyTabNavigator from "./TabNavigator";
 
 const Layout = ({ children }) => {
   const {
@@ -69,6 +70,7 @@ const Layout = ({ children }) => {
           </main>
           <Footer />
         </div>
+        <MyTabNavigator />
         <NotificationDrawer
           isOpen={isNotificationOpen}
           onClose={closeNotification}

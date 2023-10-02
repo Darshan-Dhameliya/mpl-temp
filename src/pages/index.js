@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import Button from "@/components/@core/Button";
 import AllGames from "@/assets/svg/gameMenubar/AllGames";
 import Dice from "@/assets/svg/gameMenubar/Dice";
@@ -10,7 +9,6 @@ import Favorite from "@/assets/svg/gameMenubar/Favorite";
 import RecentlyPlayed from "@/assets/svg/gameMenubar/RecentlyPlayed";
 import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import Table from "@/components/@core/Table";
-import GameCard from "@/components/@core/GameCard";
 import Game from "@/components/carsoul/game";
 
 // const inter = Inter({ subsets: ["latin"] });

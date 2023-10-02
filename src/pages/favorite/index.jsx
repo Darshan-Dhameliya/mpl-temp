@@ -24,7 +24,10 @@ export default function Favorite() {
       <SearchField className="w-full my-5 h-12" iconSize={24} />
       <div className="flex flex-row flex-wrap">
         {new Array(12).fill().map((_, index) => (
-          <div className="w-1/5 p-2" key={index}>
+          <div
+            className="w-1/2 p-2 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/5 "
+            key={index}
+          >
             <GameCard />
           </div>
         ))}
