@@ -15,11 +15,6 @@ import Withdraw from "./Withdraw";
 
 const Layout = ({ children }) => {
   const {
-    isOpen: isSidebarOpen,
-    open: openSidebar,
-    close: closeSidebar,
-  } = useDisclose(true);
-  const {
     isOpen: isLoginOpen,
     open: openLogin,
     close: closeLogin,
@@ -42,28 +37,24 @@ const Layout = ({ children }) => {
   } = useDisclose(false);
 
   const { width } = useWindowSize();
-  useMemo(() => {
-    if (width < 1024 && isSidebarOpen) closeSidebar();
-    else if (width >= 1024 && !isSidebarOpen) openSidebar();
-  }, [width]);
+  const isSidebarOpen = width >= 1024;
 
   return (
     <>
       <Appbar
-        openSidebar={openSidebar}
         openLogin={openLogin}
         openNotification={openNotification}
         openRegsiter={openRegsiter}
       />
       <div
         className={`flex transition-all  duration-300 ${
-          isSidebarOpen ? "ml-64" : "ml-0"
+          isSidebarOpen ? "ml-64" : "pb-11"
         }`}
       >
-        <Sidebar isSidebarOpen={isSidebarOpen} closeSidebar={closeSidebar} />
+        <Sidebar isSidebarOpen={isSidebarOpen} />
         <div className="w-full">
           <main
-            className="lg:px-16 py-16"
+            className="lap:px-16 py-16"
             style={{
               background:
                 " linear-gradient(180deg, #1C1F26 0%, #11141B 46.55%, #13161F 100%)",

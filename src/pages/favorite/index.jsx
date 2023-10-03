@@ -49,7 +49,7 @@ export default function Favorite() {
       <div className="flex flex-row flex-wrap">
         {imagedata.map((item, index) => (
           <div
-            className="w-1/2 p-2 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-1/5 "
+            className="w-1/2 p-2 mob:w-1/3 tab:w-1/4 lap:w-1/4 xl:w-1/5 "
             key={index}
           >
             <GameCard imgUrl={item.imgPath} />

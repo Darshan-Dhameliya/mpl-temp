@@ -17,7 +17,7 @@ export default function Transaction() {
         <TransactionIcon />
         Transaction
       </div>
-      <div class="grid lg:grid-cols-4 text-[#80879A] gap-3">
+      <div class="grid lap:grid-cols-4 text-[#80879A] gap-3">
         <div
           className="rounded-lg h-fit col-span-1 p-4 flex flex-col gap-3"
           style={{

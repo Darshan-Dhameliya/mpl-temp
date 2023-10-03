@@ -8,11 +8,11 @@ export default function GameCard(props) {
       style={{
         border: "2px solid #444B5B",
         background: "linear-gradient(180deg, #333947 0%, #2C3240 100%)",
-        height: 250,
+        // height: 250,
         width: width || "calc(100% - 8px)", // Adjust the width and margin accordingly
         margin: "4px", // Add margin to separate the cards
       }}
-      className="overflow-hidden flex rounded-xl justify-center items-center"
+      className="overflow-hidden mob:w-[200] flex rounded-xl justify-center items-center"
     >
       {imgUrl ? (
         <Image

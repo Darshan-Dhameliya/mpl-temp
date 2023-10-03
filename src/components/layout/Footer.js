@@ -95,10 +95,10 @@ export default function Footer() {
         background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
         boxShadow: "0px 3px 0px 0px #30343F inset",
       }}
-      className="lg:p-16 lg:pt-8"
+      className="lap:p-16 mobtab:px-4  lap:pt-8"
     >
-      <div className="flex justify-between">
-        <div className="lg:w-52">
+      <div className="flex flex-col lap:flex-row justify-between">
+        <div className="lap:w-52">
           <div className="flex flex-row justify-center gap-2  items-center">
             <Logo height={48} />
             <Image
@@ -123,49 +123,51 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="games">
-          <span className="h-2 text-white font-bold text-lg">Games</span>
-          <div className="flex flex-col gap-2">
-            {footerLinks.games.map((item) => (
-              <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
-                {item.label}
-              </span>
-            ))}
+        <div className="grid  lap:grid-cols-4   mobtab:gap-4 mobtab:grid-cols-2 ">
+          <div className="games">
+            <span className="h-2 text-white   font-bold text-lg">Games</span>
+            <div className="flex flex-col gap-2">
+              {footerLinks.games.map((item) => (
+                <span className=" text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                  {item.label}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="Casino">
-          <span className="h-2 text-white font-bold text-lg">Casino</span>
-          <div className="flex flex-col gap-2">
-            {footerLinks.casino.map((item) => (
-              <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
-                {item.label}
-              </span>
-            ))}
+          <div className="Casino">
+            <span className="h-2 text-white font-bold text-lg">Casino</span>
+            <div className="flex flex-col gap-2">
+              {footerLinks.casino.map((item) => (
+                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                  {item.label}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="Legal">
-          <span className="h-2 text-white font-bold text-lg">Legal</span>
-          <div className="flex flex-col gap-2">
-            {footerLinks.legal.map((item) => (
-              <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
-                {item.label}
-              </span>
-            ))}
+          <div className="Legal">
+            <span className="h-2 text-white font-bold text-lg">Legal</span>
+            <div className="flex flex-col gap-2">
+              {footerLinks.legal.map((item) => (
+                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                  {item.label}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="Support">
-          <span className="h-2 text-white font-bold text-lg">Support</span>
-          <div className="flex flex-col gap-2">
-            {footerLinks.support.map((item) => (
-              <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
-                {item.label}
-              </span>
-            ))}
+          <div className="Support">
+            <span className="h-2 text-white font-bold text-lg">Support</span>
+            <div className="flex flex-col gap-2">
+              {footerLinks.support.map((item) => (
+                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                  {item.label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
       <div className="border-b-2 border-[#282C38]" />
-      <div className="flex flex-row justify-between items-center mt-8">
+      <div className="flex mobtab:flex-col mobtab:gap-5 flex-row justify-between items-center mt-8">
         <div className="text-[#636C7D]">© 2023 Casino All rights reserved.</div>
         <div>
           <div className="text-center text-white">Accepted currencies</div>

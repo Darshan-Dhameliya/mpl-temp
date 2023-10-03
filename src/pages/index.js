@@ -12,6 +12,8 @@ import Table from "@/components/@core/Table";
 import Game from "@/components/carsoul/game";
 import { useStore } from "@/context";
 import SecureSection from "@/helper/SecureSection";
+import TableTabBar from "@/components/@core/TbaleTabBar";
+import SearchField from "@/components/@core/SearchField";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -154,16 +156,17 @@ export default function Home() {
         </div>
       </SecureSection>
       {/* menubar */}
-      <div className="bg-[#212530] w-full flex flex-row justify-between z-20 border-[#2E323D] border rounded-full p-3">
+      <div className="bg-[#212530] overflow-y-auto w-full flex gap-2 flex-row justify-between z-20 border-[#2E323D] border rounded-full lap:p-3 mobtab:p-2">
         {menubar.map((item) => (
           <div
             className={`${
               true ? "border-[#454A5D] border" : ""
-            } justify-center items-center flex flex-row gap-2 rounded-full px-3 py-2 cursor-pointer`}
+            } justify-center items-center w-fit flex flex-row gap-2 rounded-full px-3 py-2 cursor-pointer`}
             style={{
               background: true
                 ? "linear-gradient(180deg, #323846 0%, #2C3240 80.87%)"
                 : "inherit",
+              whiteSpace: "nowrap",
             }}
           >
             {item.icon({
@@ -173,9 +176,7 @@ export default function Home() {
             {item.title}
           </div>
         ))}
-        <input
-          className={`transition-all duration-300 ease-in-out  focus:pl-4 focus:text-white bg-[#212530] text-[#626778] outline-none focus:outline-none px-3 py-2 rounded-md`}
-        />
+        <SearchField className={"mobtab:w-48 w-full"} />
       </div>
       <div>
         <Game
@@ -298,27 +299,11 @@ export default function Home() {
       />
       <div>
         <div className="ms-5">
-          <div className="text-light flex items-center gap-2 text-white">
+          <div className="text-light mb-4 flex items-center gap-2 text-white">
             <Leaderboard />
             <div className="text-2xl bold">Leaderboard</div>
           </div>
-          <div className="flex flex-row mt-4 gap-1">
-            {["All Time", "Big Win", "Casino Games", "My Win"].map(
-              (item, idx) => (
-                <div
-                  className=" text-white w-fit rounded-t-2xl px-8 py-2 justify-center items-center"
-                  style={{
-                    background:
-                      idx === 0
-                        ? "linear-gradient(180deg, #313745 0%, #2C3240 100%)"
-                        : "#212530",
-                  }}
-                >
-                  {item}
-                </div>
-              )
-            )}
-          </div>
+          <TableTabBar />
         </div>
         <Table />
       </div>

@@ -160,15 +160,14 @@ const data = [
 export default function Table() {
   return (
     <div
-      className="px-3 py-2"
+      className="px-3 mobtab:mx-2 py-2 rounded-xl overflow-x-scroll"
       style={{
-        borderRadius: 26,
         background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
         boxShadow: "0px 3px 0px 0px #30343F inset",
       }}
     >
       <table
-        className={`w-full text-[#7C8497] border-spacing-4 ${style.table}`}
+        className={`w-full  text-[#7C8497] border-spacing-4 ${style.table}`}
       >
         <thead>
           <tr className="border-b-2  border-[#303644]">

@@ -7,9 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        mob: { max: "767px" },
+        tab: { min: "768px", max: "1023px" },
+        mobtab: { max: "1023px" },
+
+        lap: { min: "1024px" },
+      },
+
       fontFamily: {
         sans: ['"Josefin Sans"', "sans"],
       },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -17,6 +26,7 @@ module.exports = {
         darkPrimary: "linear-gradient(90deg, #2F323B 0%, #3A3E49 100%)",
         darkSecondary: "linear-gradient(180deg, #21252E 0%, #171B24 100%)",
       },
+
       colors: {
         transparent: "transparent",
       },

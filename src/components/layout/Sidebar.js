@@ -98,7 +98,7 @@ const profileDropDown = [
   },
 ];
 
-const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
+const Sidebar = ({ isSidebarOpen }) => {
   const router = useRouter();
   const [active, setActive] = useState(-1);
   const setActiveRoute = (title) => {

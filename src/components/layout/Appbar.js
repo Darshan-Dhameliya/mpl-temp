@@ -11,15 +11,14 @@ import NotificationIcon from "@/assets/svg/siderbar/NotificationIcon";
 import SearchField from "../@core/SearchField";
 import { useStore } from "@/context";
 
-const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {
+const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
   const router = useRouter();
   const { isloggedin } = useStore();
 
   return (
-    <nav className="bg-darkPrimary z-40 fixed left-0 right-0 px-8 h-16 flex items-center justify-between">
-      <div className="lg:gap-16 justify-between  flex-row flex items-center">
-        <div className="flex gap-3 flex-row">
-          <Menu onClick={openSidebar} className="h-9" />
+    <nav className="bg-darkPrimary z-40 fixed left-0 right-0 mobtab:px-4 lap:px-8 h-16 flex items-center justify-between">
+      <div className="lap:gap-16 mobtab:w-full justify-between  flex-row flex items-center">
+        <div>
           <Logo
             onClick={() => router.push("/")}
             className="cursor-pointer h-9"
@@ -27,7 +26,7 @@ const AppBar = ({ openSidebar, openLogin, openRegsiter, openNotification }) => {
         </div>
         <SearchField />
       </div>
-      <div className="space-x-4 lg:flex hidden h-10 py-4  items-center">
+      <div className="space-x-4 lap:flex hidden h-10 py-4  items-center">
         {isloggedin ? (
           <>
             <div

@@ -8,7 +8,7 @@ export default function useWindowSize() {
 
   React.useEffect(() => {
     const handleResize = () =>
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      setWindowSize({ width: window.innerWidth, height: window.innerWidth });
 
     window.addEventListener("resize", handleResize);
 
