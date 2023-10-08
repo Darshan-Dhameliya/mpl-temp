@@ -3,19 +3,22 @@
 import { useState, useRef } from "react";
 import GameCard from "../@core/GameCard";
 import useDeviceType from "@/helper/useDeviceType";
+import Image from "next/image";
 
-const Carousel = ({ items, title, setgamePlayURL }) => {
+const Slider = ({ items, title }) => {
   // const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);
+  const [activeDot, setactiveDot] = useState(0);
+
   const { isMobile, isTablet } = useDeviceType();
   let batch = 0;
   if (isMobile) {
-    batch = 2;
+    batch = 1;
   } else if (isTablet) {
-    batch = 4;
+    batch = 2;
   } else {
-    batch = 5;
+    batch = 3;
   }
 
   const showNext = () => {
@@ -27,8 +30,16 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
     }
   };
 
+  const dotScroll = (index) => {
+    const newBatchStart = index * batch;
+
+    if (newBatchStart < items.length) {
+      currentIndex.current = newBatchStart;
+      scrollToIndex(currentIndex.current);
+    }
+  };
+
   const showPrev = () => {
-    // setCurrentIndex((prevIndex) =>/
     const newBatchStart = currentIndex.current - batch;
     if (newBatchStart >= 0) {
       currentIndex.current = newBatchStart;
@@ -37,6 +48,7 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
   };
 
   const scrollToIndex = (index) => {
+    setactiveDot(Math.ceil(index / batch));
     const item = carouselRef.current.querySelector(`[data-index="${index}"]`);
     if (item) {
       item.scrollIntoView({
@@ -47,46 +59,45 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
     }
   };
 
-  const handleOnClick = (gameURL) => () => {
-    if (gameURL) {
-      window.open(gameURL, "_blank");
-    }
-  };
   return (
-    <div className="carousel-container p-4">
-      <div className="flex flex-row justify-between items-center  lap:px-8">
-        {title}
-        <div className="flex flex-row gap-3  items-center over">
+    <div>
+      <div className="relative my-5 h-full w-full px-6">
+        <button className="absolute z-10  top-1/2 -translate-x-1/2">
           <PrevIcon onClick={showPrev} />
-          <NextIcon onClick={showNext} />
-          <button className="bg-[#3D4351] h-8 px-3 text-sm rounded">
-            See all
-          </button>
+        </button>
+        <div className="h-full flex overflow-hidden" ref={carouselRef}>
+          {items.map((item, index) => (
+            <div
+              className="flex-none h-56 px-2 rounded-xl mob:w-full tab:w-1/2 lap:w-1/3 xl:w-1/3 " // Adjusted width here
+              key={index}
+              data-index={index}
+            >
+              <Image src={item?.img} className="h-full w-full " />
+            </div>
+          ))}
         </div>
+        <button className="absolute -right-3 top-1/2 -translate-x-1/2">
+          <NextIcon onClick={showNext} />
+        </button>
       </div>
-      <div
-        className="carousel flex overflow-hidden overflow-y-hidden"
-        ref={carouselRef}
-      >
-        {items.map((item, index) => (
-          <div
-            className="flex-none w-1/2 mob:w-1/2  tab:w-1/4 lap:w-1/5 xl:w-1/5 " // Adjusted width here
-            key={index}
-            data-index={index}
-          >
-            <GameCard
-              onClick={handleOnClick(item?.gameURL)}
-              imgUrl={item?.img}
-              index={index}
+      <div className="justify-center items-center flex">
+        {Array.from({ length: Math.ceil(items.length / batch) }).map(
+          (_, batchIndex) => (
+            <button
+              key={batchIndex}
+              className={`w-3 h-3 mx-1 rounded-full ${
+                activeDot === batchIndex ? "bg-[#80879A]" : "bg-[#333947]"
+              }`}
+              onClick={() => dotScroll(batchIndex)}
             />
-          </div>
-        ))}
+          )
+        )}
       </div>
     </div>
   );
 };
 
-const PrevIcon = ({ onClick }) => {
+const PrevIcon = ({ onClick, ...props }) => {
   return (
     <svg
       role="button"
@@ -96,6 +107,7 @@ const PrevIcon = ({ onClick }) => {
       viewBox="0 0 37 37"
       fill="none"
       onClick={onClick}
+      {...props}
     >
       <rect
         width="36.5519"
@@ -138,4 +150,4 @@ const NextIcon = ({ onClick }) => {
   );
 };
 
-export default Carousel;
+export default Slider;

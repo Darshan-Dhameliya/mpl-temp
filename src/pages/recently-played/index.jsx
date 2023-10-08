@@ -2,24 +2,10 @@ import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import GameCard from "@/components/@core/GameCard";
 import SearchField from "@/components/@core/SearchField";
 import Table from "@/components/@core/Table";
+import games from "@/provider/games";
 import React from "react";
 
 export default function Favorite() {
-  const imagedata = [
-    {
-      imgPath: require("../../assets/games/1_Skull_Fiesta.png"),
-    },
-    {
-      imgPath: require("../../assets/games/2_Duck_Trap.png"),
-    },
-
-    {
-      imgPath: require("../../assets/games/6_Aladdin_Emperors.png"),
-    },
-    {
-      imgPath: require("../../assets/games/7_Lucky_Jungle.png"),
-    },
-  ];
   return (
     <>
       <div className="flex items-center gap-4 mt-4 m text-white">
@@ -43,12 +29,12 @@ export default function Favorite() {
       </div>
       <SearchField className="w-full my-5 h-12" iconSize={24} />
       <div className="flex flex-row flex-wrap">
-        {imagedata.map((item, index) => (
+        {games.slice(0, 4).map((item, index) => (
           <div
-            className="w-1/2 p-2 mob:w-1/3 tab:w-1/4 lap:w-1/4 xl:w-1/5 "
+            className="w-1/2 p-2 mob:w-1/3 tab:w-1/4 lap:w-1/5 xl:w-1/5 "
             key={index}
           >
-            <GameCard imgUrl={item.imgPath} />
+            <GameCard imgUrl={item.img} />
           </div>
         ))}
       </div>

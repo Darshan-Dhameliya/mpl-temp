@@ -1,6 +1,7 @@
 import DropDownIcon from "@/assets/svg/DropDownIcon";
 import Logout from "@/assets/svg/Logout";
 import Settings from "@/assets/svg/siderbar/Setting";
+import Api from "@/components/settings/api";
 import General from "@/components/settings/general";
 import Language from "@/components/settings/language";
 import Password from "@/components/settings/password";
@@ -46,61 +47,19 @@ export default function Setting() {
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}
         >
-          <div
-            className={`${
-              activeId === 1 || activeId === 11 || activeId === 12
-                ? "text-[#80879A] bg-[#2F3543]"
-                : ""
-            } ${
-              activeId === 1 && "text-white"
-            } select-none cursor-pointer  overflow-hidden rounded-lg`}
-          >
-            <div
-              className="flex py-2 px-3 justify-between"
-              onClick={chnageActiveid(1)}
-            >
-              General
-              <DropDownIcon
-                size={24}
-                className={`transition-transform ${
-                  isMenuOpen ? "rotate-90" : "rotate-0"
-                }`}
-                onClick={toggleMenu}
-              />
-            </div>
-            {isMenuOpen && (
-              <>
-                <div className="border border-[#4A5161] mb-2 mx-2" />
-                <div
-                  onClick={chnageActiveid(11)}
-                  className={`${
-                    activeId === 11 ? "bg-[#4A5161] text-white" : ""
-                  }  p-2 px-3`}
-                >
-                  Change Password
-                </div>
-                <div
-                  className={`${
-                    activeId === 12 ? "bg-[#4A5161] text-white" : ""
-                  }  p-2 px-3`}
-                  onClick={chnageActiveid(12)}
-                >
-                  Language
-                </div>
-              </>
-            )}
-          </div>
           {[
+            { id: 1, name: "General" },
             { id: 2, name: "Security" },
-            { id: 3, name: "Privacy Policy" },
-            { id: 4, name: "Terms and Conditions" },
-            { id: 5, name: "Session History" },
+            { id: 3, name: "Api" },
+            { id: 4, name: "Session History" },
+            { id: 5, name: "Terms and Conditions" },
+            { id: 6, name: "Privacy Policy" },
           ].map((item) => (
             <div
               role="button"
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""
-              }  py-2 px-3 rounded-lg hover:text-white`}
+              }  py-2 px-3 rounded-lg focus:outline-gray-500 focus:outline-1  hover:text-white`}
               onClick={chnageActiveidAndCloseDropdown(item.id)}
             >
               {item.name}
@@ -128,12 +87,13 @@ export default function Setting() {
           }}
         >
           {activeId == 1 && <General />}
-          {activeId == 11 && <Password />}
-          {activeId == 12 && <Language />}
+          {/* {activeId == 11 && <Password />}
+          {activeId == 12 && <Language />} */}
+          {activeId == 3 && <Api />}
           {activeId == 2 && <Security />}
-          {activeId == 3 && <PrivacyPolicy />}
-          {activeId == 4 && <TermsAndCondition />}
-          {activeId == 5 && <SessionHistory />}
+          {activeId == 4 && <SessionHistory />}
+          {activeId == 5 && <TermsAndCondition />}
+          {activeId == 6 && <PrivacyPolicy />}
         </div>
         {/* <div class="row-start-1 row-end-4 bg-red-700">03</div> */}
       </div>

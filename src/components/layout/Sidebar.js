@@ -1,102 +1,14 @@
 // components/Sidebar.js
 import Link from "next/link";
-import Affiliate from "@/assets/svg/siderbar/Affiliate";
-import VIPClub from "@/assets/svg/siderbar/VIPClub";
-import Blog from "@/assets/svg/siderbar/Blog";
-import Transaction from "@/assets/svg/siderbar/Transaction";
-import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
-import Deposit from "@/assets/svg/siderbar/Deposit";
-import Withdraw from "@/assets/svg/siderbar/Withdraw";
-import Livechat from "@/assets/svg/siderbar/LiveChat";
-import Settings from "@/assets/svg/siderbar/Setting";
 import { useState } from "react";
-import SupportSytem from "@/assets/svg/siderbar/SupportSytem";
 import { useRouter } from "next/router";
 import useDisclose from "@/helper/useDisclose";
-import DropDownIcon from "@/assets/svg/DropDownIcon";
-import AddCash from "@/assets/svg/siderbar/AddCash";
-import Promocode from "@/assets/svg/siderbar/Promocode";
-import ManageBenificiary from "@/assets/svg/siderbar/ManageBenificiary";
-import AddBenificiary from "@/assets/svg/siderbar/AddBenificiary";
+import SupportSytem from "@/assets/svg/siderbar/SupportSytem";
 import Profile from "@/assets/svg/siderbar/Profile";
 import SecureSection from "@/helper/SecureSection";
 import { useDispatch } from "@/context";
-
-const navigation = [
-  {
-    title: "Affiliate",
-    href: "/affiliate",
-    icon: (props) => <Affiliate {...props} />,
-  },
-  {
-    title: "VIP Club",
-    href: "/vipclub",
-    icon: (props) => <VIPClub {...props} />,
-  },
-  {
-    title: "Blog",
-    href: "/blog",
-    icon: (props) => <Blog {...props} />,
-  },
-  {
-    title: "Transaction",
-    href: "/transaction",
-    icon: (props) => <Transaction {...props} />,
-  },
-  {
-    title: "Leaderboard",
-    href: "/leaderboard",
-    icon: (props) => <Leaderboard {...props} />,
-  },
-  {
-    title: "Deposit",
-    modal: "SHOWDEPOSIT",
-    icon: (props) => <Deposit {...props} />,
-  },
-  {
-    title: "Withdraw",
-    modal: "SHOWWITHDRAW",
-    icon: (props) => <Withdraw {...props} />,
-  },
-  {
-    title: "Live Chat",
-    modal: "SHOWLIVECHAT",
-    icon: (props) => <Livechat {...props} />,
-  },
-  {
-    title: "Setting",
-    href: "/settings",
-    icon: (props) => <Settings {...props} />,
-  },
-];
-
-const profileDropDown = [
-  {
-    title: "Wallet",
-    href: "",
-    icon: (props) => <Deposit {...props} />,
-  },
-  {
-    title: "Add Cash",
-    href: "",
-    icon: (props) => <AddCash {...props} />,
-  },
-  {
-    title: "Apply promocode",
-    href: "",
-    icon: (props) => <Promocode {...props} />,
-  },
-  {
-    title: "Manage Beneficiary",
-    href: "",
-    icon: (props) => <ManageBenificiary {...props} />,
-  },
-  {
-    title: "Add Beneficiary",
-    href: "",
-    icon: (props) => <AddBenificiary {...props} />,
-  },
-];
+import navigation from "@/provider/navigation";
+import CollapsibleDropdown from "../@core/CollapsibleDropdown/index.";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -114,11 +26,6 @@ const Sidebar = () => {
       type,
     });
   };
-  const {
-    isOpen: isMenuOpen,
-    toggle: toggleMenu,
-    close: closeMenu,
-  } = useDisclose(false);
   return (
     <aside
       className={`w-64 bg-darkSecondary mt-16  sidebar-sahdow text-white fixed inset-0 `}
@@ -178,81 +85,57 @@ const Sidebar = () => {
               </svg>
               Recently Played
             </div>
-            <div
-              className={`${
-                isMenuOpen ? "text-[#fff] bg-[#292D38]" : "text-[#80879A]"
-              } select-none hs-collapse-toggle cursor-pointer overflow-hidden`}
-            >
-              <div className="flex py-2 px-3 justify-between">
-                <div className="flex flex-row gap-3">
-                  <Profile height={24} width={24} />
-                  Profile
-                </div>
-                <DropDownIcon
-                  size={24}
-                  className={`transition-transform hs-collapse-toggle ${
-                    isMenuOpen ? "rotate-90" : "rotate-0"
-                  }`}
-                  onClick={toggleMenu}
-                />
-              </div>
-              <div
-                className={`${
-                  isMenuOpen ? "h-auto" : "h-0"
-                } overflow-hidden transition-all`}
-              >
-                {profileDropDown.map((item, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveRoute(item.title);
-                      router.push(item?.href);
-                    }}
-                    className={`ms-2 gap-4 ${
-                      active === idx ? "bg-[#292D38]" : "bg-inherit"
-                    } hover:bg-[#292D38] cursor-pointer px-4 py-1 flex-row items-center flex text-base`}
-                  >
-                    {item.icon({
-                      height: 16,
+          </SecureSection>
+
+          {navigation.map((item, idx) =>
+            item.children ? (
+              <SecureSection>
+                <div className={`cursor-pointer overflow-hidden`}>
+                  <CollapsibleDropdown
+                    items={item.children}
+                    icon={item.icon({
+                      heght: 16,
                       width: 16,
                     })}
-                    <span
-                      className={`${"text-[#80879A]"} font-bold hover:text-white`}
-                    >
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </SecureSection>
-          {navigation.map((item, idx) => (
-            <div
-              onClick={() => {
-                setActiveRoute(item.title);
-                if (item.href) {
-                  router.push(item?.href);
-                }
-                if (item.modal) {
-                  openModal(item.modal);
-                }
-              }}
-              className={`gap-4 ${
-                active === idx ? "bg-[#292D38]" : "bg-inherit"
-              } hover:bg-[#292D38] cursor-pointer px-4 py-1 flex-row items-center flex text-base`}
-            >
-              {item.icon({
-                heght: 16,
-                width: 16,
-              })}
-              <span
-                className={`${active === idx ? "text-white" : "text-[#80879A]"}
-              font-bold  hover:text-white`}
+                    title={item.title}
+                    onItemClick={(props) => {
+                      setActiveRoute(item.title);
+                      router.push(props?.href);
+                    }}
+                    close={active !== idx}
+                  />
+                </div>
+              </SecureSection>
+            ) : (
+              <div
+                onClick={() => {
+                  setActiveRoute(item.title);
+                  if (item.href) {
+                    router.push(item?.href);
+                  }
+                  if (item.modal) {
+                    openModal(item.modal);
+                  }
+                }}
+                className={`gap-4 ${
+                  active === idx ? "bg-[#292D38]" : "bg-inherit"
+                } hover:bg-[#292D38] cursor-pointer px-4 py-1 flex-row items-center flex text-base`}
               >
-                {item.title}
-              </span>
-            </div>
-          ))}
+                {item.icon({
+                  heght: 16,
+                  width: 16,
+                })}
+                <span
+                  className={`${
+                    active === idx ? "text-white" : "text-[#80879A]"
+                  }
+              font-bold  hover:text-white`}
+                >
+                  {item.title}
+                </span>
+              </div>
+            )
+          )}
         </div>
         <div
           className={`gap-4 mb-4 hover:bg-[#292D38] cursor-pointer px-4 py-1 flex-row items-center flex text-base`}

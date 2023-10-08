@@ -1,11 +1,26 @@
-import DropDownIcon from "@/assets/svg/DropDownIcon";
-import Logout from "@/assets/svg/Logout";
-import Settings from "@/assets/svg/siderbar/Setting";
 import TransactionIcon from "@/assets/svg/siderbar/Transaction";
 import AllDeposit from "@/components/transaction/allDeposit";
-import Deposit from "@/components/transaction/deposit";
+import AddMoney from "@/components/transaction/addMoney";
 import Withdraw from "@/components/transaction/withdraw";
 import React, { useState } from "react";
+import Join from "@/components/transaction/Join";
+import Win from "@/components/transaction/Win";
+import Refund from "@/components/transaction/Refund";
+import Success from "@/components/transaction/Success";
+import Failed from "@/components/transaction/Failed";
+import Pending from "@/components/transaction/Pending";
+
+const data = [
+  { id: 1, name: "All Transaction" },
+  { id: 2, name: "Add Money" },
+  { id: 3, name: "Withdraw" },
+  { id: 4, name: "Join" },
+  { id: 5, name: "Win" },
+  { id: 6, name: "Refund" },
+  { id: 7, name: "Success" },
+  { id: 8, name: "Failed" },
+  { id: 9, name: "Pending" },
+];
 
 export default function Transaction() {
   const [activeId, setactiveId] = useState(1);
@@ -24,19 +39,15 @@ export default function Transaction() {
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}
         >
-          {[
-            { id: 1, name: "All Transaction" },
-            { id: 2, name: "Deposit" },
-            { id: 3, name: "Withdraw" },
-          ].map((item) => (
-            <div
+          {data.map((item) => (
+            <button
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""
-              } cursor-pointer py-2 ps-4 rounded-lg hover:text-white`}
+              } cursor-pointer text-start py-2 ps-4 transition-all rounded-lg hover:bg-[#2F3543] hover:text-white`}
               onClick={chnageActiveid(item.id)}
             >
               {item.name}
-            </div>
+            </button>
           ))}
         </div>
         <div
@@ -46,8 +57,14 @@ export default function Transaction() {
           }}
         >
           {activeId == 1 && <AllDeposit />}
-          {activeId == 2 && <Deposit />}
+          {activeId == 2 && <AddMoney />}
           {activeId == 3 && <Withdraw />}
+          {activeId == 4 && <Join />}
+          {activeId == 5 && <Win />}
+          {activeId == 6 && <Refund />}
+          {activeId == 7 && <Success />}
+          {activeId == 8 && <Failed />}
+          {activeId == 9 && <Pending />}
         </div>
       </div>
     </div>
