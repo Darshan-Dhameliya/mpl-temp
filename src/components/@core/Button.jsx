@@ -8,9 +8,7 @@ const buttonVariants = {
     "px-8 font-semibold bg-green-600 py-2 rounded-md bg-gray-500 hover:bg-green-700 text-white",
 };
 
-export default function Button(props) {
-  const { variant, className, children } = props;
-
+export default function Button({ variant, className, children, ...props }) {
   const selectedVariant = buttonVariants[variant] || buttonVariants.primary;
 
   return (

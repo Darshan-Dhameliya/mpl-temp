@@ -49,7 +49,8 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
 
   const handleOnClick = (gameURL) => () => {
     if (gameURL) {
-      setgamePlayURL(gameURL);
+      // setgamePlayURL(gameURL);
+      window.open(gameURL, "_blank");
     }
   };
   return (
