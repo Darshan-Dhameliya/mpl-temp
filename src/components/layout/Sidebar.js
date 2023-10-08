@@ -98,7 +98,7 @@ const profileDropDown = [
   },
 ];
 
-const Sidebar = ({ isSidebarOpen }) => {
+const Sidebar = () => {
   const router = useRouter();
   const [active, setActive] = useState(-1);
   const setActiveRoute = (title) => {
@@ -121,9 +121,7 @@ const Sidebar = ({ isSidebarOpen }) => {
   } = useDisclose(false);
   return (
     <aside
-      className={`w-64 bg-darkSecondary mt-16  sidebar-sahdow text-white fixed inset-0  transform ${
-        isSidebarOpen ? "translate-x-0" : "-translate-x-64"
-      } transition-transform duration-300 ease-in-out`}
+      className={`w-64 bg-darkSecondary mt-16  sidebar-sahdow text-white fixed inset-0 `}
     >
       <nav className="flex-col  flex justify-between content-between h-full  ">
         <div className="flex-col mt-8 gap-y-1 flex justify-center">
@@ -180,7 +178,6 @@ const Sidebar = ({ isSidebarOpen }) => {
               </svg>
               Recently Played
             </div>
-
             <div
               className={`${
                 isMenuOpen ? "text-[#fff] bg-[#292D38]" : "text-[#80879A]"

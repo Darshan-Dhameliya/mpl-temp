@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import GameCard from "../@core/GameCard";
 import useDeviceType from "@/helper/useDeviceType";
 
-const Carousel = ({ items, title }) => {
+const Carousel = ({ items, title, setgamePlayURL }) => {
   // const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);
@@ -13,9 +13,9 @@ const Carousel = ({ items, title }) => {
   if (isMobile) {
     batch = 2;
   } else if (isTablet) {
-    batch = 3;
-  } else {
     batch = 4;
+  } else {
+    batch = 5;
   }
 
   const showNext = () => {
@@ -47,6 +47,11 @@ const Carousel = ({ items, title }) => {
     }
   };
 
+  const handleOnClick = (gameURL) => () => {
+    if (gameURL) {
+      setgamePlayURL(gameURL);
+    }
+  };
   return (
     <div className="carousel-container p-4">
       <div className="flex flex-row justify-between items-center  lap:px-8">
@@ -65,11 +70,15 @@ const Carousel = ({ items, title }) => {
       >
         {items.map((item, index) => (
           <div
-            className="flex-none w-1/2 mob:w-1/2  tab:w-1/3 lap:w-1/4 xl:w-1/4 " // Adjusted width here
+            className="flex-none w-1/2 mob:w-1/2  tab:w-1/4 lap:w-1/5 xl:w-1/5 " // Adjusted width here
             key={index}
             data-index={index}
           >
-            <GameCard imgUrl={item?.imgPath} index={index} />
+            <GameCard
+              onClick={handleOnClick(item?.gameURL)}
+              imgUrl={item?.imgPath}
+              index={index}
+            />
           </div>
         ))}
       </div>

@@ -1,4 +1,4 @@
-import Logo from "@/assets/svg/Logo";
+import Logo from "@/assets/logo.png";
 import Image from "next/image";
 import React from "react";
 import FlagImg from "../../assets/flag.png";
@@ -100,7 +100,11 @@ export default function Footer() {
       <div className="flex flex-col lap:flex-row justify-between">
         <div className="lap:w-52">
           <div className="flex flex-row justify-center gap-2  items-center">
-            <Logo height={48} />
+            <Image
+              src={Logo}
+              onClick={() => router.push("/")}
+              className="w-48 h-full cursor-pointer object-cover"
+            />
             <Image
               src={FlagImg}
               alt="Your Image"

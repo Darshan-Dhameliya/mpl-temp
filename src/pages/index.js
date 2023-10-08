@@ -14,6 +14,8 @@ import { useStore } from "@/context";
 import SecureSection from "@/helper/SecureSection";
 import TableTabBar from "@/components/@core/TbaleTabBar";
 import SearchField from "@/components/@core/SearchField";
+import { useState } from "react";
+import GamePlayer from "@/components/GamePlayer";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +63,8 @@ const imagedata = [
   },
   {
     imgPath: require("../assets/games/2_Duck_Trap.png"),
+    gameURL:
+      "http://52.15.40.84/casino/launch.html?platformId=1&gameId=2&isReal=false",
   },
   {
     imgPath: require("../assets/games/3_Fishing_Fantasy.png"),
@@ -79,10 +83,9 @@ const imagedata = [
   },
 ];
 
-// Now, imagedata contains an array of objects with the image paths.
-
 export default function Home() {
   const { isloggedin } = useStore();
+  const [gamePlayURL, setgamePlayURL] = useState("");
 
   return (
     <div className={`h-full flex flex-col gap-8 text-white`}>
@@ -149,10 +152,14 @@ export default function Home() {
         </>
       )}
       <SecureSection>
-        <div className="h-64 mt-5">
-          <div className="bg-darkPrimary h-full flex justify-center items-center">
-            slider for games/advertisement
-          </div>
+        <div className={`${gamePlayURL ? "h-96" : "h-64"} transition-all mt-5`}>
+          {gamePlayURL ? (
+            <GamePlayer url={gamePlayURL} onClose={() => setgamePlayURL("")} />
+          ) : (
+            <div className="bg-darkPrimary h-full flex justify-center items-center">
+              slider for games/advertisement
+            </div>
+          )}
         </div>
       </SecureSection>
       {/* menubar */}
@@ -202,6 +209,7 @@ export default function Home() {
               Hot Games
             </div>
           }
+          setgamePlayURL={setgamePlayURL}
           items={imagedata}
         />
       </div>

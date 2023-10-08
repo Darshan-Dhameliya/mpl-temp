@@ -1,5 +1,5 @@
 // components/Navbar.js
-import Logo from "@/assets/svg/Logo";
+import Logo from "@/assets/logo.png";
 import React from "react";
 import FlagImg from "@/assets/flag.png";
 import Image from "next/image";
@@ -19,9 +19,10 @@ const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
     <nav className="bg-darkPrimary z-40 fixed left-0 right-0 mobtab:px-4 lap:px-8 h-16 flex items-center justify-between">
       <div className="lap:gap-16 mobtab:w-full justify-between  flex-row flex items-center">
         <div>
-          <Logo
+          <Image
+            src={Logo}
             onClick={() => router.push("/")}
-            className="cursor-pointer h-9"
+            className="w-32 h-full cursor-pointer object-cover"
           />
         </div>
         <SearchField />

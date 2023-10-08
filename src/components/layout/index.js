@@ -8,10 +8,10 @@ import Sidebar from "./Sidebar";
 import useDisclose from "@/helper/useDisclose";
 import { useMemo } from "react";
 import NotificationDrawer from "./NotificationDrawer";
-import MyTabNavigator from "./TabNavigator";
 import LiveChat from "./LiveChat";
 import Deposit from "./Deposit";
 import Withdraw from "./Withdraw";
+import TabNavigator from "./TabNavigator";
 
 const Layout = ({ children }) => {
   const {
@@ -46,12 +46,13 @@ const Layout = ({ children }) => {
         openNotification={openNotification}
         openRegsiter={openRegsiter}
       />
+      <TabNavigator />
+      {isSidebarOpen && <Sidebar />}
       <div
         className={`flex transition-all  duration-300 ${
-          isSidebarOpen ? "ml-64" : "pb-11"
+          isSidebarOpen ? "ml-64" : "pb-16"
         }`}
       >
-        <Sidebar isSidebarOpen={isSidebarOpen} />
         <div className="w-full">
           <main
             className="lap:px-16 py-16"
@@ -64,7 +65,6 @@ const Layout = ({ children }) => {
           </main>
           <Footer />
         </div>
-        <MyTabNavigator />
         <NotificationDrawer
           isOpen={isNotificationOpen}
           onClose={closeNotification}

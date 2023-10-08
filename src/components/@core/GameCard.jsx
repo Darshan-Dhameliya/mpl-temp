@@ -2,9 +2,10 @@ import Image from "next/image";
 import React from "react";
 
 export default function GameCard(props) {
-  const { width, index, imgUrl } = props;
+  const { width, index, imgUrl, onClick } = props;
   return (
     <div
+      role="button"
       style={{
         border: "2px solid #444B5B",
         background: "linear-gradient(180deg, #333947 0%, #2C3240 100%)",
@@ -12,7 +13,8 @@ export default function GameCard(props) {
         width: width || "calc(100% - 8px)", // Adjust the width and margin accordingly
         margin: "4px", // Add margin to separate the cards
       }}
-      className="overflow-hidden mob:w-[200] flex rounded-xl justify-center items-center"
+      onClick={onClick}
+      className="overflow-hidden cursor-pointer flex rounded-xl justify-center items-center"
     >
       {imgUrl ? (
         <Image
