@@ -32,6 +32,7 @@ const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
     toggleBtn.style.background = "transparent";
     toggleBtn.style.color = "#80879A";
     dropDownIcon.style.transform = "rotate(0deg)";
+    setactiveOption(-1);
   };
 
   // useEffect(() => {

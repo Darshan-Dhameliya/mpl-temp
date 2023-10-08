@@ -6,6 +6,11 @@ import games from "@/provider/games";
 import React from "react";
 
 export default function Favorite() {
+  const handleOnClick = (gameURL) => () => {
+    if (gameURL) {
+      window.open(gameURL, "_blank");
+    }
+  };
   return (
     <>
       <div className="flex items-center gap-2 mt-4 m text-white">
@@ -30,7 +35,7 @@ export default function Favorite() {
             className="w-1/2 p-2 mob:w-1/3 tab:w-1/4 lap:w-1/5 xl:w-1/5 "
             key={index}
           >
-            <GameCard imgUrl={item.img} />
+            <GameCard imgUrl={item.img} onClick={handleOnClick(item.gameURL)} />
           </div>
         ))}
       </div>
