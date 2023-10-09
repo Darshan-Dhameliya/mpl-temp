@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function AllGames(props) {
+  // if (props.active) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -28,4 +29,6 @@ export default function AllGames(props) {
       />
     </svg>
   );
+  // }
+  // return;
 }

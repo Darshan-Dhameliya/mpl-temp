@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./index.module.css";
-import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 
 const data = [
   {
@@ -160,7 +159,7 @@ const data = [
 export default function Table() {
   return (
     <div
-      className="px-3 mobtab:mx-2 py-2 rounded-xl overflow-x-scroll"
+      className="px-3 mobtab:mx-2 py-2 rounded-xl overflow-x-auto"
       style={{
         background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
         boxShadow: "0px 3px 0px 0px #30343F inset",

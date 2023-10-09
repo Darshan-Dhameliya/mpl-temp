@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import DropDownIcon from "@/assets/svg/DropDownIcon";
+import Divider from "../Divider";
 
-const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
+const CollapsibleDropdown = ({ items, title, icon, close, onItemClick }) => {
   const containerRef = useRef(null);
   const dropDownIconRef = useRef(null);
   const toggleBtnRef = useRef(null);
@@ -60,8 +61,11 @@ const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
     <div>
       <button
         ref={toggleBtnRef}
-        className="flex  text-[#80879A] py-2 w-full items-center px-4 justify-between"
+        className="flex  text-[#80879A]   py-2 w-full items-center px-4 justify-between"
         onClick={toggleAnimation}
+        style={{
+          transition: "all 0.2s ease-out",
+        }}
       >
         <div className="flex flex-row gap-3">
           {icon}
@@ -77,9 +81,10 @@ const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
         style={{
           maxHeight: "0px",
           overflow: "hidden",
-          transition: "max-height 0.3s ease-out",
+          transition: "all 0.3s ease-out",
         }}
       >
+        <Divider className="m-0" />
         {items.map((item, index) => (
           <div
             key={index}
@@ -87,11 +92,9 @@ const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
               setactiveOption(index);
               onItemClick(item);
             }}
-            className={`ms-2 gap-4 ${
-              activeOption === index
-                ? "bg-[#292D38] text-[#fff]"
-                : "bg-inherit text-[#80879A]"
-            } hover:bg-[#292D38] cursor-pointer px-4  py-1 flex-row items-center flex `}
+            className={`ps-4 gap-4 ${
+              activeOption === index ? " text-[#fff]" : "text-[#80879A]"
+            } hover:text-[#fff] bg-[#292D38] cursor-pointer px-4  py-1 flex-row items-center flex `}
           >
             {item.icon({
               height: 16,
@@ -105,4 +108,4 @@ const AutoHeightAnimation = ({ items, title, icon, close, onItemClick }) => {
   );
 };
 
-export default AutoHeightAnimation;
+export default CollapsibleDropdown;

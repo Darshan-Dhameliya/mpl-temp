@@ -62,6 +62,7 @@ const menubar = [
 export default function Home() {
   const { isloggedin } = useStore();
   const [gamePlayURL, setgamePlayURL] = useState("");
+  const [activeMenu, setactiveMenu] = useState(0);
 
   return (
     <div className={`h-full flex flex-col gap-8 text-white`}>
@@ -130,21 +131,24 @@ export default function Home() {
       <Slider items={games} />
       {/* menubar */}
       <div className="bg-[#212530] overflow-y-auto w-full flex gap-2 flex-row justify-between z-20 border-[#2E323D] border rounded-full lap:p-3 mobtab:p-2">
-        {menubar.map((item) => (
+        {menubar.map((item, idx) => (
           <div
             className={`${
-              true ? "border-[#454A5D] border" : ""
-            } justify-center items-center w-fit flex flex-row gap-2 rounded-full px-3 py-2 cursor-pointer`}
+              activeMenu === idx ? "border-[#454A5D] " : "border-transparent"
+            } justify-center items-center w-fit border flex flex-row gap-2 rounded-full px-3 py-2 cursor-pointer`}
             style={{
-              background: true
-                ? "linear-gradient(180deg, #323846 0%, #2C3240 80.87%)"
-                : "inherit",
+              background:
+                activeMenu === idx
+                  ? "linear-gradient(180deg, #323846 0%, #2C3240 80.87%)"
+                  : "inherit",
               whiteSpace: "nowrap",
             }}
+            onClick={() => setactiveMenu(idx)}
           >
             {item.icon({
               height: 18,
               width: 18,
+              active: activeMenu === idx,
             })}
             {item.title}
           </div>
