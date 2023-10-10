@@ -4,7 +4,7 @@ import LivechatIcon from "@/assets/svg/siderbar/LiveChat";
 
 export default function LiveChat() {
   const { showLiveChat: isOpen } = useStore();
-  console.log(isOpen);
+
   const dispatch = useDispatch();
   const onClose = () => {
     dispatch({

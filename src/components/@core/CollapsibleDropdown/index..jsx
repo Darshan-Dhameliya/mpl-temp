@@ -96,10 +96,14 @@ const CollapsibleDropdown = ({ items, title, icon, close, onItemClick }) => {
               activeOption === index ? " text-[#fff]" : "text-[#80879A]"
             } hover:text-[#fff] bg-[#292D38] cursor-pointer px-4  py-1 flex-row items-center flex `}
           >
-            {item.icon({
-              height: 16,
-              width: 16,
-            })}
+            {item.icon ? (
+              item.icon({
+                height: 16,
+                width: 16,
+              })
+            ) : (
+              <span className="w-4"></span>
+            )}
             <span className={` font-bold hover:text-white`}>{item.title}</span>
           </div>
         ))}

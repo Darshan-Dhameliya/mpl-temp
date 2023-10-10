@@ -64,6 +64,17 @@ export default [
     title: "Transaction",
     href: "/transaction",
     icon: (props) => <Transaction {...props} />,
+    children: [
+      { id: 1, title: "All Transaction" },
+      { id: 2, title: "Add Money" },
+      { id: 3, title: "Withdraw" },
+      { id: 4, title: "Join" },
+      { id: 5, title: "Win" },
+      { id: 6, title: "Refund" },
+      { id: 7, title: "Success" },
+      { id: 8, title: "Failed" },
+      { id: 9, title: "Pending" },
+    ],
   },
   {
     title: "Leaderboard",
@@ -89,5 +100,13 @@ export default [
     title: "Setting",
     href: "/settings",
     icon: (props) => <Settings {...props} />,
+    children: [
+      { id: 1, title: "General" },
+      { id: 2, title: "Security" },
+      { id: 3, title: "Api" },
+      { id: 4, title: "Session History" },
+      { id: 5, title: "Terms and Conditions" },
+      { id: 6, title: "Privacy Policy" },
+    ],
   },
 ];

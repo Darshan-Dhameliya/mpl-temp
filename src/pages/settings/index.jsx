@@ -42,7 +42,7 @@ export default function Setting() {
       </div>
       <div class="grid lap:grid-cols-4 text-[#80879A] gap-3">
         <div
-          className="rounded-lg h-fit col-span-1 p-4 flex flex-col gap-3"
+          className="rounded-lg mobtab:hidden h-fit col-span-1 p-4 flex flex-col gap-3"
           style={{
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}

@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 
 export default function TabNavigator() {
   const [activeTab, setActiveTab] = useState(1);
+  const [active, setActive] = useState(-1);
+
   const {
     isOpen: isMenuShow,
     toggle: toggleMenu,
@@ -19,6 +21,13 @@ export default function TabNavigator() {
   } = useDisclose();
   const router = useRouter();
 
+  const setActiveRoute = (title) => {
+    setActive(
+      MobileNavigation.findIndex(
+        (item) => item.title.toLowerCase() === title.toLowerCase()
+      )
+    );
+  };
   const tabs = [
     {
       id: 1,
@@ -50,40 +59,47 @@ export default function TabNavigator() {
     };
   }, [isMenuShow]);
 
+  console.log(active);
   return (
     <>
       <div
         className={`fixed flex-col ${
           isMenuShow ? "translate-x-0" : "-translate-x-full"
-        }  bg-darkPrimary my-16 transition-all py-4 overflow-y-scroll items-start flex inset-0  z-50  w-full`}
+        }  bg-darkPrimary my-16 transition-all py-4 overflow-auto items-start flex inset-0  z-50  w-full`}
         style={{
-          height: "calc(100% - 64px - 64px + 1px)",
+          height: "calc(100% - 64px - 64px)",
         }}
       >
         {MobileNavigation.map((item, idx) =>
           item.children ? (
-            <div className={`cursor-pointer w-full overflow-hidden text-xl`}>
+            <div
+              className={`cursor-pointer flex-none w-full overflow-hidden text-xl`}
+            >
               <CollapsibleDropdown
                 items={item.children}
                 icon={item.icon({
                   heght: 24,
                   width: 24,
                 })}
+                key={idx}
                 title={item.title}
                 onItemClick={(props) => {
-                  // setActiveRoute(item.title);
+                  setActiveRoute(item.title);
+                  if (props.href) {
+                    router.push(props?.href);
+                  }
+                  router.push(item?.href);
                   closeMenu();
-                  router.push(props?.href);
                 }}
-                // close={active !== idx}
+                close={active !== idx}
               />
             </div>
           ) : (
             <div
               onClick={() => {
-                // setActiveRoute(item.title);
+                setActiveRoute(item.title);
                 if (item.href) {
-                  closeMenu();
+                  // closeMenu();
                   router.push(item?.href);
                 }
                 // if (item.modal) {
