@@ -1,0 +1,58 @@
+import Settings from "@/assets/svg/siderbar/Setting";
+import Api from "@/components/settings/api";
+import General from "@/components/settings/general";
+import Security from "@/components/settings/security";
+import { useDispatch } from "@/context";
+import useDisclose from "@/helper/useDisclose";
+import React, { useState } from "react";
+
+export default function ResponsibleGamling() {
+  const [activeId, setactiveId] = useState(1);
+  const chnageActiveidAndCloseDropdown = (num) => () => {
+    setactiveId(num);
+  };
+
+  return (
+    <div className=" p-4">
+      <div className="flex flex-row text-white font-bold gap-2 text-2xl ">
+        <Settings />
+        Settings
+      </div>
+      <div class="grid lap:grid-cols-4 text-[#80879A] gap-3">
+        <div
+          className="rounded-lg mobtab:hidden h-fit col-span-1 p-4 flex flex-col gap-3"
+          style={{
+            background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
+          }}
+        >
+          {[
+            { id: 1, name: "Ace Jackpot Safe" },
+            { id: 2, name: "Self Exclusion" },
+            { id: 3, name: "Gambling Limits" },
+          ].map((item) => (
+            <div
+              role="button"
+              className={`${
+                activeId === item.id ? " text-white  bg-[#2F3543]" : ""
+              }  py-2 px-3 rounded-lg focus:outline-gray-500 focus:outline-1  hover:text-white`}
+              onClick={chnageActiveidAndCloseDropdown(item.id)}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
+        <div
+          class="col-span-3 h-fit rounded-lg p-8 text-[#80879A]"
+          style={{
+            background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
+          }}
+        >
+          {activeId == 1 && <General />}
+          {activeId == 2 && <Security />}
+          {activeId == 3 && <Api />}
+        </div>
+        {/* <div class="row-start-1 row-end-4 bg-red-700">03</div> */}
+      </div>
+    </div>
+  );
+}

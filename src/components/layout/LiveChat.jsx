@@ -2,6 +2,79 @@ import { useDispatch, useStore } from "@/context";
 import React from "react";
 import LivechatIcon from "@/assets/svg/siderbar/LiveChat";
 
+const data = [
+  {
+    name: "Player1",
+    message: "Hey, anyone up for a game of Apex Legends?",
+    time: "15:30",
+  },
+  {
+    name: "Gamer23",
+    message: "Sure, I'm in! Let's squad up!",
+    time: "15:32",
+  },
+  {
+    name: "ProGamerX",
+    message: "Count me in too. We'll dominate the battlefield!",
+    time: "15:34",
+  },
+  {
+    name: "GamerGirl123",
+    message: "I'm game. Can't wait to play!",
+    time: "15:35",
+  },
+  {
+    name: "NoobSlayer",
+    message: "Just remember to cover me, guys!",
+    time: "15:38",
+  },
+  {
+    name: "RetroGamer77",
+    message: "I might be a bit rusty, but I'm in!",
+    time: "15:40",
+  },
+  {
+    name: "EpicWarrior",
+    message: "Let's do this, team! We got this!",
+    time: "15:42",
+  },
+  {
+    name: "GameMasterX",
+    message: "Ready for some serious gaming action!",
+    time: "15:45",
+  },
+  {
+    name: "LoneWolf",
+    message: "I prefer playing solo, but I'm watching your backs!",
+    time: "15:47",
+  },
+  {
+    name: "TheGamingGeek",
+    message: "I've been waiting for this all day!",
+    time: "15:50",
+  },
+  {
+    name: "BattleRoyaleChamp",
+    message: "Let's aim for that victory royale!",
+    time: "15:52",
+  },
+  {
+    name: "StealthNinja",
+    message: "I'll be the ninja of the team, sneaking up on opponents!",
+    time: "15:55",
+  },
+  {
+    name: "QuickScopeMaster",
+    message: "Sniping enemies from afar is my specialty!",
+    time: "15:57",
+  },
+  {
+    name: "CouchPotatoGamer",
+    message: "I'm just here to have fun and enjoy the game!",
+    time: "16:00",
+  },
+];
+
 export default function LiveChat() {
   const { showLiveChat: isOpen } = useStore();
 
@@ -41,11 +114,29 @@ export default function LiveChat() {
           />
         </svg>
       </div>
-      <div className="h-full w-full flex-col flex   justify-center items-center">
+      {/* <div className="h-full w-full flex-col flex   justify-center items-center">
         <div className="text-white text-2xl mt-4 font-bold">
           No Chat available
         </div>
         <div className="text-[#7C8497]">There are no new chat</div>
+      </div> */}
+      <div className="h-full flex gap-2 flex-col w-full overflow-auto">
+        {data.map((item) => (
+          <div className="message">
+            <div className="flex gap-3 flex-row items-center">
+              <div className="h-8 w-8 bg-[#3D4554] rounded-full" />
+              <div>
+                <div className="text-[#818EA9]">
+                  {item.name}{" "}
+                  <span className="text-[#535966]">{item.time}</span>
+                </div>
+                <div className="text-light text-white py-2 px-3 rounded-lg w-fit bg-[#3D4554]">
+                  {item.message}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

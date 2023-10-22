@@ -12,6 +12,7 @@ import Promocode from "@/assets/svg/siderbar/Promocode";
 import ManageBenificiary from "@/assets/svg/siderbar/ManageBenificiary";
 import AddBenificiary from "@/assets/svg/siderbar/AddBenificiary";
 import Profile from "@/assets/svg/siderbar/Profile";
+import ResponsibleGamling from "@/assets/svg/siderbar/ResponsibleGamling";
 
 export default [
   {
@@ -84,6 +85,11 @@ export default [
     title: "Live Chat",
     modal: "SHOWLIVECHAT",
     icon: (props) => <Livechat {...props} />,
+  },
+  {
+    title: "Responsible Gambling",
+    href: "/responsiblegambling",
+    icon: (props) => <ResponsibleGamling {...props} />,
   },
   {
     title: "Setting",
