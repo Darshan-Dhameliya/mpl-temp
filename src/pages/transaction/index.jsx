@@ -2,13 +2,14 @@ import TransactionIcon from "@/assets/svg/siderbar/Transaction";
 import AllDeposit from "@/components/transaction/allDeposit";
 import AddMoney from "@/components/transaction/addMoney";
 import Withdraw from "@/components/transaction/withdraw";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Join from "@/components/transaction/Join";
 import Win from "@/components/transaction/Win";
 import Refund from "@/components/transaction/Refund";
 import Success from "@/components/transaction/Success";
 import Failed from "@/components/transaction/Failed";
 import Pending from "@/components/transaction/Pending";
+import { useRouter } from "next/router";
 
 const data = [
   { id: 1, name: "All Transaction" },
@@ -25,6 +26,12 @@ const data = [
 export default function Transaction() {
   const [activeId, setactiveId] = useState(1);
   const chnageActiveid = (num) => () => setactiveId(num);
+
+  const { query } = useRouter();
+  useEffect(() => {
+    setactiveId(parseInt(query?.id, 10));
+    return () => {};
+  }, [query?.id]);
 
   return (
     <div className=" p-4">

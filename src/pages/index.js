@@ -10,7 +10,6 @@ import RecentlyPlayed from "@/assets/svg/gameMenubar/RecentlyPlayed";
 import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import Table from "@/components/@core/Table";
 import Game from "@/components/carsoul/game";
-import { useStore } from "@/context";
 import SecureSection from "@/helper/SecureSection";
 import TableTabBar from "@/components/@core/TbaleTabBar";
 import SearchField from "@/components/@core/SearchField";
@@ -18,6 +17,7 @@ import { useState } from "react";
 import GamePlayer from "@/components/GamePlayer";
 import games from "@/provider/games";
 import Slider from "@/components/carsoul/slider";
+import { useSelector } from "react-redux";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -60,7 +60,8 @@ const menubar = [
 ];
 
 export default function Home() {
-  const { isloggedin } = useStore();
+  const isloggedin = useSelector((state) => state.app.isloggedin);
+
   const [gamePlayURL, setgamePlayURL] = useState("");
   const [activeMenu, setactiveMenu] = useState(0);
 

@@ -1,7 +1,8 @@
-import { useStore, useUserContext } from "@/context";
+import { useSelector } from "react-redux";
 
 export default function SecureSection({ children }) {
-  const { isloggedin } = useStore();
+  const isloggedin = useSelector((state) => state.app.isloggedin);
+
   if (isloggedin) {
     return children;
   }

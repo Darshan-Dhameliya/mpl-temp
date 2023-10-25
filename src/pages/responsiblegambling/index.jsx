@@ -1,10 +1,10 @@
+import ResponsibleGamlingIcon from "@/assets/svg/siderbar/ResponsibleGamling";
 import Settings from "@/assets/svg/siderbar/Setting";
-import Api from "@/components/settings/api";
-import General from "@/components/settings/general";
-import Security from "@/components/settings/security";
-import { useDispatch } from "@/context";
-import useDisclose from "@/helper/useDisclose";
-import React, { useState } from "react";
+import AceJackpotSafe from "@/components/responsiblegambling/AceJackpotSafe";
+import GamblingLimits from "@/components/responsiblegambling/GamblingLimits";
+import SelfExclusion from "@/components/responsiblegambling/SelfExclusion";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 export default function ResponsibleGamling() {
   const [activeId, setactiveId] = useState(1);
@@ -12,11 +12,17 @@ export default function ResponsibleGamling() {
     setactiveId(num);
   };
 
+  const { query } = useRouter();
+  useEffect(() => {
+    setactiveId(parseInt(query?.id, 10));
+    return () => {};
+  }, [query?.id]);
+
   return (
     <div className=" p-4">
-      <div className="flex flex-row text-white font-bold gap-2 text-2xl ">
-        <Settings />
-        Settings
+      <div className="flex flex-row text-white font-bold gap-2 mb-3 text-2xl ">
+        <ResponsibleGamlingIcon />
+        Responsible Gambling
       </div>
       <div class="grid lap:grid-cols-4 text-[#80879A] gap-3">
         <div
@@ -47,9 +53,9 @@ export default function ResponsibleGamling() {
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}
         >
-          {activeId == 1 && <General />}
-          {activeId == 2 && <Security />}
-          {activeId == 3 && <Api />}
+          {activeId == 1 && <AceJackpotSafe />}
+          {activeId == 2 && <SelfExclusion />}
+          {activeId == 3 && <GamblingLimits />}
         </div>
         {/* <div class="row-start-1 row-end-4 bg-red-700">03</div> */}
       </div>

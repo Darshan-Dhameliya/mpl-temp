@@ -9,6 +9,7 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);
   const { isMobile, isTablet } = useDeviceType();
+
   let batch = 0;
   if (isMobile) {
     batch = 2;
@@ -52,6 +53,7 @@ const Carousel = ({ items, title, setgamePlayURL }) => {
       window.open(gameURL, "_blank");
     }
   };
+
   return (
     <div className="carousel-container p-4">
       <div className="flex flex-row justify-between items-center  lap:px-8">

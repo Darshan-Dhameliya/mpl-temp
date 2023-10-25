@@ -1,11 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { useDispatch, useStore } from "@/context";
 import DepositIcon from "@/assets/svg/siderbar/Deposit";
 import CloseIcon from "@/assets/svg/CloseIcon";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Deposit() {
-  const { showDeposit: isOpen } = useStore();
+  const isOpen = useSelector((state) => state.app.showDeposit);
 
   const dispatch = useDispatch();
   const onClose = () => {

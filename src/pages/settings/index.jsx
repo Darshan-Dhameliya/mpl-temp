@@ -1,30 +1,30 @@
-import DropDownIcon from "@/assets/svg/DropDownIcon";
 import Logout from "@/assets/svg/Logout";
 import Settings from "@/assets/svg/siderbar/Setting";
 import Api from "@/components/settings/api";
 import General from "@/components/settings/general";
-import Language from "@/components/settings/language";
-import Password from "@/components/settings/password";
 import PrivacyPolicy from "@/components/settings/privacyPolicy";
 import Security from "@/components/settings/security";
 import SessionHistory from "@/components/settings/SessionHistory";
 import TermsAndCondition from "@/components/settings/termsAndCondition";
-import { useDispatch } from "@/context";
 import SecureSection from "@/helper/SecureSection";
-import useDisclose from "@/helper/useDisclose";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+const data = [
+  { id: 1, name: "General" },
+  { id: 2, name: "Security" },
+  { id: 3, name: "Api" },
+  { id: 4, name: "Session History" },
+  { id: 5, name: "Terms and Conditions" },
+  { id: 6, name: "Privacy Policy" },
+];
 
 export default function Setting() {
   const [activeId, setactiveId] = useState(1);
-  const {
-    isOpen: isMenuOpen,
-    toggle: toggleMenu,
-    close: closeMenu,
-  } = useDisclose(false);
-  const chnageActiveid = (num) => () => setactiveId(num);
+
   const chnageActiveidAndCloseDropdown = (num) => () => {
     setactiveId(num);
-    closeMenu();
   };
 
   const dispatch = useDispatch();
@@ -33,6 +33,12 @@ export default function Setting() {
       type: "USER_LOGOUT",
     });
   };
+
+  const { query } = useRouter();
+  useEffect(() => {
+    setactiveId(parseInt(query?.id, 10));
+    return () => {};
+  }, [query?.id]);
 
   return (
     <div className=" p-4">
@@ -47,14 +53,7 @@ export default function Setting() {
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}
         >
-          {[
-            { id: 1, name: "General" },
-            { id: 2, name: "Security" },
-            { id: 3, name: "Api" },
-            { id: 4, name: "Session History" },
-            { id: 5, name: "Terms and Conditions" },
-            { id: 6, name: "Privacy Policy" },
-          ].map((item) => (
+          {data.map((item) => (
             <div
               role="button"
               className={`${
@@ -95,7 +94,6 @@ export default function Setting() {
           {activeId == 5 && <TermsAndCondition />}
           {activeId == 6 && <PrivacyPolicy />}
         </div>
-        {/* <div class="row-start-1 row-end-4 bg-red-700">03</div> */}
       </div>
     </div>
   );

@@ -2,13 +2,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import useDisclose from "@/helper/useDisclose";
 import SupportSytem from "@/assets/svg/siderbar/SupportSytem";
-import Profile from "@/assets/svg/siderbar/Profile";
 import SecureSection from "@/helper/SecureSection";
-import { useDispatch } from "@/context";
 import navigation from "@/provider/navigation";
-import CollapsibleDropdown from "../@core/CollapsibleDropdown/index.";
+import CollapsibleDropdown from "../@core/CollapsibleDropdown";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   const router = useRouter();

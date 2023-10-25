@@ -5,7 +5,7 @@ import useDisclose from "@/helper/useDisclose";
 import MobileNavigation from "@/provider/MobileNavigation";
 import { useEffect, useState } from "react";
 import { PiListMagnifyingGlassBold } from "react-icons/pi";
-import CollapsibleDropdown from "../@core/CollapsibleDropdown/index.";
+import CollapsibleDropdown from "../@core/CollapsibleDropdown";
 import { useRouter } from "next/router";
 
 // Define your component here...
@@ -59,7 +59,6 @@ export default function TabNavigator() {
     };
   }, [isMenuShow]);
 
-  console.log(active);
   return (
     <>
       <div
@@ -85,10 +84,11 @@ export default function TabNavigator() {
                 title={item.title}
                 onItemClick={(props) => {
                   setActiveRoute(item.title);
-                  if (props.href) {
-                    router.push(props?.href);
+                  if (props?.href) {
+                    router.push(`${props?.href}`);
+                  } else {
+                    router.push(`${item?.href}?id=${props.id}`);
                   }
-                  router.push(item?.href);
                   closeMenu();
                 }}
                 close={active !== idx}
@@ -99,12 +99,8 @@ export default function TabNavigator() {
               onClick={() => {
                 setActiveRoute(item.title);
                 if (item.href) {
-                  // closeMenu();
                   router.push(item?.href);
                 }
-                // if (item.modal) {
-                //   openModal(item.modal);
-                // }
               }}
               // ${
               //   active === idx ? "bg-[#292D38]" : "bg-inherit"

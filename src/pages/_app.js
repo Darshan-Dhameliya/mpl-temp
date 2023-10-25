@@ -1,13 +1,16 @@
 import "@/styles/globals.css";
 import Layout from "../components/layout";
-import { ContextProvider } from "@/context/index";
+import { reduxWrapper, store } from "@/store";
+import { Provider } from "react-redux";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <ContextProvider>
+    <Provider store={store}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ContextProvider>
+    </Provider>
   );
 }
+
+export default reduxWrapper.withRedux(App);

@@ -1,6 +1,6 @@
-import { useDispatch, useStore } from "@/context";
 import React from "react";
 import LivechatIcon from "@/assets/svg/siderbar/LiveChat";
+import { useDispatch, useSelector } from "react-redux";
 
 const data = [
   {
@@ -76,8 +76,7 @@ const data = [
 ];
 
 export default function LiveChat() {
-  const { showLiveChat: isOpen } = useStore();
-
+  const isOpen = useSelector((state) => state.app.showLiveChat);
   const dispatch = useDispatch();
   const onClose = () => {
     dispatch({

@@ -6,7 +6,6 @@ import useDeviceType from "@/helper/useDeviceType";
 import Image from "next/image";
 
 const Slider = ({ items, title }) => {
-  // const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);
   const [activeDot, setactiveDot] = useState(0);

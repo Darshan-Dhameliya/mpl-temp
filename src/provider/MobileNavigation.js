@@ -12,33 +12,40 @@ import Promocode from "@/assets/svg/siderbar/Promocode";
 import ManageBenificiary from "@/assets/svg/siderbar/ManageBenificiary";
 import AddBenificiary from "@/assets/svg/siderbar/AddBenificiary";
 import Profile from "@/assets/svg/siderbar/Profile";
+import ResponsibleGamling from "@/assets/svg/siderbar/ResponsibleGamling";
 
 export default [
   {
     title: "Profile",
     icon: (props) => <Profile {...props} />,
+    href: "profile",
     children: [
       {
+        id: 1,
         title: "Wallet",
         href: "",
         icon: (props) => <Deposit {...props} />,
       },
       {
+        id: 2,
         title: "Add Cash",
         href: "",
         icon: (props) => <AddCash {...props} />,
       },
       {
+        id: 3,
         title: "Apply promocode",
         href: "",
         icon: (props) => <Promocode {...props} />,
       },
       {
+        id: 4,
         title: "Manage Beneficiary",
         href: "",
         icon: (props) => <ManageBenificiary {...props} />,
       },
       {
+        id: 5,
         title: "Add Beneficiary",
         href: "",
         icon: (props) => <AddBenificiary {...props} />,
@@ -107,6 +114,16 @@ export default [
       { id: 4, title: "Session History" },
       { id: 5, title: "Terms and Conditions" },
       { id: 6, title: "Privacy Policy" },
+    ],
+  },
+  {
+    title: "Responsible Gambling",
+    href: "/responsiblegambling",
+    icon: (props) => <ResponsibleGamling {...props} />,
+    children: [
+      { id: 1, title: "Ace Jackpot Safe" },
+      { id: 2, title: "Self Exclusion" },
+      { id: 3, title: "Gambling Limits" },
     ],
   },
 ];
