@@ -1,10 +1,10 @@
 // components/Carousel.js
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import GameCard from "../@core/GameCard";
 import useDeviceType from "@/helper/useDeviceType";
 
-const Carousel = ({ items, title, setgamePlayURL }) => {
+const Carousel = ({ items, title }) => {
   // const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);

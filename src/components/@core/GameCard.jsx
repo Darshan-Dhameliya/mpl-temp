@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 export default function GameCard(props) {
-  const { width, index, imgUrl, onClick } = props;
+  const { width, imgUrl, onClick } = props;
   return (
     <div
       role="button"
@@ -19,6 +19,7 @@ export default function GameCard(props) {
       {imgUrl ? (
         <Image
           src={imgUrl}
+          alt="something went wrong"
           className="h-full w-full object-cover"
           objectFit="cover"
         />

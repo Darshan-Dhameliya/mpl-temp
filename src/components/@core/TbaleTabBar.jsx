@@ -8,6 +8,7 @@ export default function TableTabBar() {
     <div className="flex overflow-x-auto flex-row  gap-1">
       {["All Time", "Big Win", "Casino Games", "My Win"].map((item, idx) => (
         <div
+          key={item}
           role="button"
           onClick={changeSelected(idx)}
           className={`text-white  flex overflow-hidden rounded-t-xl px-2 sm:px-4 py-2 `}

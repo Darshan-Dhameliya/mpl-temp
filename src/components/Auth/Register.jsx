@@ -12,7 +12,6 @@ import CloseIcon from "@/assets/svg/CloseIcon";
 import { Form, Formik } from "formik";
 
 export default function MyModal({ isOpen, onClose, openLogin }) {
-  const [selectedMethod, setSelectedMethod] = useState("email");
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>

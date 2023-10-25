@@ -74,6 +74,7 @@ export default function Login({ isOpen, onClose, openRestPass, openRegsiter }) {
                   <Image
                     src={require("@/assets/auth_girls_bg.png")}
                     className="w-3/4  object-cover"
+                    alt="something went wrong"
                   />
                 </div>
                 <div className="text-center font-bold text-2xl text-white mb-3">
