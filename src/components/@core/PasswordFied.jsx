@@ -12,8 +12,10 @@ export default function PasswordFied(props) {
       <input
         type={isPasswordShow ? "text" : "password"}
         {...props}
-        autoComplete={false}
-        className={`w-full transition-all duration-300 ease-in-out traistio focus:pl-4 focus:text-white  text-white outline-none focus:outline-none px-3 py-2 rounded-md bg-[#2F3442] ${className}`}
+        autoComplete="off"
+        className={`w-full transition-all text-[#626778] duration-300 ease-in-out traistio focus:pl-4 focus:text-white outline-none focus:outline-none px-3 py-2 rounded-md bg-[#2F3442] ${
+          className || ""
+        }`}
       />
       <div className="absolute inset-y-0 right-0 flex items-center pr-3">
         <PasswordEye

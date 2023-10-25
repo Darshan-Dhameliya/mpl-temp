@@ -1,18 +1,13 @@
-import axios from "axios";
+import { toast } from "react-toastify";
 import { AxiosPost } from "../axioConsumer";
 import { getBrowserType } from "../helper";
 
-export const login = async (data) => {
-  data["browser"] = getBrowserType();
-  data["device"] = getBrowserType();
-  try {
-    const { data: ipdata } = await axios.get("https://api.myip.com/");
-    data["ip"] = ipdata.ip;
-    data["locationCountry"] = ipdata.cc;
-    return AxiosPost("auth/login", data);
-  } catch (error) {
-    return AxiosPost("auth/login", data);
-  }
+export const login = async (dto) => {
+  dto["browser"] = getBrowserType();
+  dto["device"] = getBrowserType();
+  const { data, message } = await AxiosPost("auth/login", dto);
+  toast.success(message);
+  return data;
 };
 
 export const register = (data) => {

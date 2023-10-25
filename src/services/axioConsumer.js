@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const BASEURL = {
   ENDPOINT_URL: "http://44.201.249.76:5010/",
@@ -8,25 +9,49 @@ const http = axios.create({
   baseURL: `${BASEURL.ENDPOINT_URL}api/web/`,
 });
 
-export const AxiosGet = (url) => http.get(url);
-export const AxiosPost = (url, data) => http.post(url, data);
-
-export const AxiosHeaderGet = (url) => {
-  const token = localStorage.getItem("AuthToken");
-  return http.get(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const AxiosGet = async (url) => {
+  try {
+    const { data } = await http.get(url);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+export const AxiosPost = async (url, parmas) => {
+  try {
+    const { data } = await http.post(url, parmas);
+    return data;
+  } catch (error) {
+    toast.warning(error?.response?.data?.message || error?.message);
+  }
 };
 
-export const AxiosHeaderPost = (url, data) => {
+export const AxiosHeaderGet = async (url) => {
+  try {
+    const token = localStorage.getItem("AuthToken");
+    const { data } = await http.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const AxiosHeaderPost = async (url, dto) => {
   const token = localStorage.getItem("AuthToken");
-  return http.post(url, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  try {
+    const { data } = await http.post(url, dto, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
 
 // export const AxiosHeaderPatch = async (url, data, isFormData = false) => {
