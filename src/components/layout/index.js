@@ -6,7 +6,6 @@ import Appbar from "./Appbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import useDisclose from "@/helper/useDisclose";
-import { useMemo } from "react";
 import NotificationDrawer from "./NotificationDrawer";
 import LiveChat from "./LiveChat";
 import Deposit from "./Deposit";

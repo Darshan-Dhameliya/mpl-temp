@@ -53,8 +53,9 @@ export default function Setting() {
             background: "linear-gradient(180deg, #212530 0%, #212530 100%)",
           }}
         >
-          {data.map((item) => (
+          {data.map((item, idx) => (
             <div
+              key={idx}
               role="button"
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""

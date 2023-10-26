@@ -4,7 +4,7 @@ import React from "react";
 export default function SearchField(props) {
   const { className, iconSize } = props;
   return (
-    <div className="relative lap:w-60 mobtab:w-1/2">
+    <div className="relative mobtab:w-1/2 w-full">
       <input
         type={"text"}
         placeholder="Search For Games"

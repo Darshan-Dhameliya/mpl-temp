@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function SecureSection({ children }) {
-  const isloggedin = useSelector((state) => state.app.isloggedin);
+  const isloggedin = useSelector((state) => state.user.isloggedin);
 
   if (isloggedin) {
     return children;

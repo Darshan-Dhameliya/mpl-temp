@@ -1,0 +1,71 @@
+{
+  "_id": "6537684f7ba0a875d9c6516d",
+  "email": "test101@yopmail.com",
+  "username": "t101",
+  "loginType": "0",
+  "notificationMode": true,
+  "recentGames": ["game1", "game2"],
+  "favouriteGames": ["game3", "game4"],
+  "total_balance": 0,
+  "deposit_wallet": 0,
+  "withdraw_wallet": 0,
+  "bonus_wallet": 0,
+  "refercode": "qFTky",
+  "totalWin": 0,
+  "totalPlayed": 0,
+  "dob": "1990-01-01",
+  "playerStatus": "active",
+  "referPlayers": [],
+  "sound": true,
+  "music": true,
+  "vibration": true,
+  "safeTable": [],
+  "createdAt": "2023-10-24T06:46:39.887Z",
+  "updatedAt": "2023-10-26T05:15:23.172Z",
+  "__v": 9,
+  "image": "1698131712198-804694288.jpg",
+  "IFSCCode": "ABC1234567",
+  "UPIId": "john.doe@upi",
+  "bankAccountNo": "1234567890123456",
+  "bankName": "Bank of Example",
+  "deviceId": "test123",
+  "deviceName": "testdevice",
+  "deviceOs": "testOs",
+  "limit": "10000",
+  "name": "John Doe",
+  "notificationToken": "randomnotificationtoken123",
+  "phone": "1234567890",
+  "twoFactorPassword": "123456",
+  "kyc": false,
+  "deviceModel": "testmodel",
+  "sessions": [
+    {
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUzNzY4NGY3YmEwYTg3NWQ5YzY1MTZkIiwiaWF0IjoxNjk4Mjk3MjQwLCJleHAiOjE3MDA4ODkyNDB9.6UrlpSArxlVusQ-oCFIPmSKImpRLRKef1_scpPHMEGM",
+      "browser": "chrome",
+      "locationCountry": "IN",
+      "_id": "6539f59875111afaf7dc0d82",
+      "createdAt": "2023-10-26T05:14:00.896Z",
+      "id": "6539f59875111afaf7dc0d82"
+    }
+  ],
+  "tokens": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUzNzY4NGY3YmEwYTg3NWQ5YzY1MTZkIiwiaWF0IjoxNjk4Mjk3MzIzLCJleHAiOjE2OTg5MDIxMjN9.sgQCVkwflAIsTfjJCYpvC-bRQTIUc37k6JjwmZmUxgQ",
+      "device": "chrome 11",
+      "_id": "6539f5eb75111afaf7dc0d87",
+      "createdAt": "2023-10-26T05:15:23.168Z",
+      "updatedAt": "2023-10-26T05:15:23.168Z",
+      "id": "6539f5eb75111afaf7dc0d87"
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUzNzY4NGY3YmEwYTg3NWQ5YzY1MTZkIiwiaWF0IjoxNjk4Mjk3MjQwLCJleHAiOjE2OTg5MDIwNDB9.FCu2AbVBXNMppfANj9YbDfZy5fxVsMIIH3JPCYf0ad0",
+      "device": "testdevice",
+      "_id": "6539f59875111afaf7dc0d81",
+      "createdAt": "2023-10-26T05:14:00.895Z",
+      "updatedAt": "2023-10-26T05:14:00.895Z",
+      "id": "6539f59875111afaf7dc0d81"
+    }
+  ],
+  "imageUrl": "http://44.201.249.76:5010/uploads/players/1698131712198-804694288.jpg",
+  "id": "6537684f7ba0a875d9c6516d"
+}

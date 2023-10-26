@@ -60,7 +60,7 @@ const menubar = [
 ];
 
 export default function Home() {
-  const isloggedin = useSelector((state) => state.app.isloggedin);
+  const isloggedin = useSelector((state) => state.user.isloggedin);
 
   const [gamePlayURL, setgamePlayURL] = useState("");
   const [activeMenu, setactiveMenu] = useState(0);

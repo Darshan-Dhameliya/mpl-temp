@@ -11,5 +11,5 @@ export const login = async (dto) => {
 };
 
 export const register = (data) => {
-  return AxiosPost("auth/register", data);
+  return AxiosPost("auth/signup", data);
 };

@@ -1,5 +1,4 @@
 const initialState = {
-  isloggedin: false,
   showLiveChat: false,
   showDeposit: false,
   showWithdraw: false,

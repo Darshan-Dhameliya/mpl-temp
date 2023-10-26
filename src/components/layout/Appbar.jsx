@@ -3,16 +3,17 @@ import Logo from "@/assets/logo.png";
 import React from "react";
 import FlagImg from "@/assets/flag.png";
 import Image from "next/image";
-import Menu from "@/assets/svg/Menu";
 import { useRouter } from "next/router";
 import BitCoin from "@/assets/svg/siderbar/BitCoin";
 import Button from "../@core/Button";
 import NotificationIcon from "@/assets/svg/siderbar/NotificationIcon";
 import SearchField from "../@core/SearchField";
 import SecureSection from "@/helper/SecureSection";
+import { useSelector } from "react-redux";
 
 const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
   const router = useRouter();
+  const isloggedin = useSelector((state) => state.user.isloggedin);
 
   return (
     <nav className="bg-darkPrimary z-40 fixed left-0 right-0 mobtab:px-4 lap:px-8 h-16 flex items-center justify-between">
@@ -21,6 +22,7 @@ const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
           src={Logo}
           onClick={() => router.push("/")}
           className="w-32 h-full cursor-pointer object-cover"
+          alt="something went wrong"
         />
         <div className="mob:hidden">
           <SearchField />
@@ -61,7 +63,9 @@ const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
               />
             </svg>
           </div>
-          <Button variant="secondary">Wallet </Button>
+          <Button variant="secondary" className={"border-0"}>
+            Wallet{" "}
+          </Button>
           <NotificationIcon
             role="button"
             size={24}
@@ -69,25 +73,23 @@ const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
             onClick={openNotification}
           />
           <div className="border-l border-gray-600 h-8" />
-          <Image
-            src={FlagImg}
-            alt="Your Image"
-            className="rounded-full w-8 h-8"
-          />
         </SecureSection>
-        <button
-          onClick={openLogin}
-          className="px-8 font-semibold uppercase py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white"
-        >
-          Sign In
-        </button>
-        <button
-          onClick={openRegsiter}
-          className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
-        >
-          Registration
-        </button>
-        <div className="border-l border-gray-600 h-8" />
+        {isloggedin === false && (
+          <>
+            <button
+              onClick={openLogin}
+              className="px-8 font-semibold uppercase py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={openRegsiter}
+              className="px-3 h-10 font-semibold py-2 uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
+            >
+              Registration
+            </button>
+          </>
+        )}
         <Image
           src={FlagImg}
           alt="Your Image"

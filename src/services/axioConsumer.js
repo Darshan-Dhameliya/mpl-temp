@@ -22,6 +22,7 @@ export const AxiosPost = async (url, parmas) => {
     const { data } = await http.post(url, parmas);
     return data;
   } catch (error) {
+    console.log(error);
     toast.warning(error?.response?.data?.message || error?.message);
   }
 };
