@@ -24,23 +24,26 @@ const AppBar = ({ openLogin, openRegsiter, openNotification }) => {
           className="w-32 h-full cursor-pointer object-cover"
           alt="something went wrong"
         />
-        <div className="mob:hidden">
-          <SearchField />
-        </div>
-        <div className="lap:hidden flex flex-row gap-2 items-center">
-          <button
-            onClick={openLogin}
-            className="px-2 h-10 font-semibold text-sm uppercase rounded-md bg-blue-500 hover:bg-blue-600 text-white"
-          >
-            Sign In
-          </button>
-          <button
-            onClick={openRegsiter}
-            className="px-2 h-10 font-semibold uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
-          >
-            Registration
-          </button>
-        </div>
+        <SecureSection>
+          <SearchField parentclassName={"mr-2"} />
+        </SecureSection>
+
+        {isloggedin === false && (
+          <div className="lap:hidden flex flex-row gap-2 items-center">
+            <button
+              onClick={openLogin}
+              className="px-2 h-8 font-semibold text-sm uppercase rounded-md bg-blue-500 hover:bg-blue-600 text-white"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={openRegsiter}
+              className="px-2 h-8 font-semibold uppercase rounded-md bg-red-500 hover:bg-red-600 text-white"
+            >
+              Registration
+            </button>
+          </div>
+        )}
       </div>
       <div className="space-x-4 lap:flex hidden h-10 py-4  items-center">
         <SecureSection>

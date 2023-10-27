@@ -2,11 +2,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const BASEURL = {
-  ENDPOINT_URL: "http://44.201.249.76:5010/",
+  ENDPOINT_URL: "https://api-ace-jackpot.bytecodestudio.com/api/web/",
 };
 
 const http = axios.create({
-  baseURL: `${BASEURL.ENDPOINT_URL}api/web/`,
+  baseURL: `${BASEURL.ENDPOINT_URL}`,
 });
 
 export const AxiosGet = async (url) => {
@@ -22,7 +22,6 @@ export const AxiosPost = async (url, parmas) => {
     const { data } = await http.post(url, parmas);
     return data;
   } catch (error) {
-    console.log(error);
     toast.warning(error?.response?.data?.message || error?.message);
   }
 };
@@ -32,7 +31,7 @@ export const AxiosHeaderGet = async (url) => {
     const token = localStorage.getItem("AuthToken");
     const { data } = await http.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        token,
       },
     });
     return data;

@@ -7,8 +7,10 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case UserAction.SET_USER_DATA: {
-      state = action.payload || {};
-      state.isloggedin = true;
+      if (action.payload) {
+        state = action.payload;
+        state.isloggedin = true;
+      }
       return { ...state };
     }
     // case UserAction.UPDTAE_USER_DATA: {

@@ -16,7 +16,6 @@ export default function SessionHistory() {
           <th>Action</th>
         </tr>
         {sessions.map((item) => {
-          console.log(item);
           return (
             <tr key={item?.id}>
               <td>{item?.browser}</td>

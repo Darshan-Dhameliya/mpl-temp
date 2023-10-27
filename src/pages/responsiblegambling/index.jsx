@@ -14,7 +14,9 @@ export default function ResponsibleGamling() {
 
   const { query } = useRouter();
   useEffect(() => {
-    setactiveId(parseInt(query?.id, 10));
+    if (query?.id) {
+      setactiveId(parseInt(query?.id, 10));
+    }
     return () => {};
   }, [query?.id]);
 
@@ -37,6 +39,7 @@ export default function ResponsibleGamling() {
             { id: 3, name: "Gambling Limits" },
           ].map((item) => (
             <div
+              key={item.id}
               role="button"
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""

@@ -56,12 +56,17 @@ const Carousel = ({ items, title }) => {
 
   return (
     <div className="carousel-container p-4">
-      <div className="flex flex-row justify-between items-center  lap:px-8">
+      <div className="flex flex-row justify-between items-center ">
         {title}
         <div className="flex flex-row gap-3  items-center over">
-          <PrevIcon onClick={showPrev} />
-          <NextIcon onClick={showNext} />
-          <button className="bg-[#3D4351] h-8 px-3 text-sm rounded">
+          <PrevIcon onClick={showPrev} size={isMobile ? 28 : 32} />
+          <NextIcon onClick={showNext} size={isMobile ? 28 : 32} />
+          <button
+            className="bg-[#3D4351] px-3 text-sm rounded"
+            style={{
+              height: isMobile ? 28 : 32,
+            }}
+          >
             See all
           </button>
         </div>
@@ -88,13 +93,13 @@ const Carousel = ({ items, title }) => {
   );
 };
 
-const PrevIcon = ({ onClick }) => {
+const PrevIcon = ({ onClick, size }) => {
   return (
     <svg
       role="button"
       xmlns="http://www.w3.org/2000/svg"
-      width="37"
-      height="37"
+      width={size}
+      height={size}
       viewBox="0 0 37 37"
       fill="none"
       onClick={onClick}
@@ -114,14 +119,14 @@ const PrevIcon = ({ onClick }) => {
   );
 };
 
-const NextIcon = ({ onClick }) => {
+const NextIcon = ({ onClick, size }) => {
   return (
     <svg
       role="button"
       onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
-      width="37"
-      height="37"
+      width={size}
+      height={size}
       viewBox="0 0 37 37"
       fill="none"
     >

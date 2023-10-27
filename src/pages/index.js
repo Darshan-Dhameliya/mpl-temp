@@ -10,11 +10,9 @@ import RecentlyPlayed from "@/assets/svg/gameMenubar/RecentlyPlayed";
 import Leaderboard from "@/assets/svg/siderbar/Leaderboard";
 import Table from "@/components/@core/Table";
 import Game from "@/components/carsoul/game";
-import SecureSection from "@/helper/SecureSection";
 import TableTabBar from "@/components/@core/TbaleTabBar";
 import SearchField from "@/components/@core/SearchField";
 import { useState } from "react";
-import GamePlayer from "@/components/GamePlayer";
 import games from "@/provider/games";
 import Slider from "@/components/carsoul/slider";
 import { useSelector } from "react-redux";
@@ -69,16 +67,22 @@ export default function Home() {
     <div className={`h-full flex flex-col gap-8 text-white`}>
       {isloggedin === false && (
         <>
-          <div className=" flex flex-col w-full relative">
+          <div className="lap:h-80 mob:h-48 flex flex-col justify-center w-full relative">
             <Image
               src={require("../assets/Main_page_img.svg")}
-              className="w-screen absolute inset-0 z-0"
+              className="w-full absolute inset-0 z-0"
+              alt=""
             />
-            <div className="flex flex-col gap-6  mt-16">
-              <div className="text-[#858AA0] text-2xl">
+            <Image
+              src={require("../assets/main_girls_bg.svg")}
+              className="h-full mt-10  absolute right-0 z-0"
+              alt=""
+            />
+            <div className="flex overflow-auto flex-col gap-6 z-10 ">
+              <div className="text-[#858AA0] text-2xl mob:text-base">
                 Sign Up &<span className="text-[#3DDC80]"> Get</span> Reward
               </div>
-              <div className="text-white text-7xl font-bold">
+              <div className="text-white text-7xl  mob:text-base font-bold">
                 UP TO <span className="text-[#3DDC80]">$ 22,000</span>
               </div>
               <div className="flex flex-row gap-3 items-center">
@@ -126,14 +130,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="h-64 mt-5" />
         </>
       )}
-      <Slider items={games} />
+      <Slider parentClass="" items={games} />
       {/* menubar */}
       <div className="bg-[#212530] overflow-y-auto w-full flex gap-2 flex-row justify-between z-20 border-[#2E323D] border rounded-full lap:p-3 mobtab:p-2">
         {menubar.map((item, idx) => (
           <div
+            key={item.title}
             className={`${
               activeMenu === idx ? "border-[#454A5D] " : "border-transparent"
             } justify-center items-center w-fit border flex flex-row gap-2 rounded-full px-3 py-2 cursor-pointer`}

@@ -5,7 +5,7 @@ import GameCard from "../@core/GameCard";
 import useDeviceType from "@/helper/useDeviceType";
 import Image from "next/image";
 
-const Slider = ({ items, title }) => {
+const Slider = ({ items, parentClass }) => {
   const carouselRef = useRef(null);
   const currentIndex = useRef(0);
   const [activeDot, setactiveDot] = useState(0);
@@ -59,8 +59,8 @@ const Slider = ({ items, title }) => {
   };
 
   return (
-    <div>
-      <div className="relative my-5 h-full w-full px-6">
+    <div className={parentClass}>
+      <div className="relative h-full mb-4 w-full px-6">
         <button className="absolute z-10  top-1/2 -translate-x-1/2">
           <PrevIcon onClick={showPrev} />
         </button>

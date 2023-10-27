@@ -4,8 +4,33 @@ import { reduxWrapper, store } from "@/store";
 import { Provider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import * as Api from "@/services/API";
+import { setUserData } from "@/store/user/actions";
+import { useEffect } from "react";
+import useLoader from "@/helper/useLoader";
 
 function App({ Component, pageProps }) {
+  const { isloading, enableLoading, disableLoading } = useLoader();
+
+  const getDtaUsingToken = async () => {
+    enableLoading();
+    const { data } = await Api.auth.me();
+    console.log(data);
+    store.dispatch(setUserData(data));
+    disableLoading();
+  };
+
+  useEffect(() => {
+    if (store) {
+      getDtaUsingToken();
+    }
+    return () => {};
+  }, []);
+
+  if (isloading) {
+    return null;
+  }
+
   return (
     <Provider store={store}>
       <Layout>

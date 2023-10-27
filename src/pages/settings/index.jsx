@@ -36,7 +36,9 @@ export default function Setting() {
 
   const { query } = useRouter();
   useEffect(() => {
-    setactiveId(parseInt(query?.id, 10));
+    if (query?.id) {
+      setactiveId(parseInt(query?.id, 10));
+    }
     return () => {};
   }, [query?.id]);
 
