@@ -8,7 +8,7 @@ import Whatsapp from "@/assets/svg/social/Whatsapp";
 import Instagram from "@/assets/svg/social/Instagram";
 import Youtube from "@/assets/svg/social/Youtube";
 import Plus from "@/assets/svg/18Plus";
-import SupportSytem from "@/assets/svg/siderbar/SupportSytem";
+import { useRouter } from "next/router";
 const footerLinks = {
   games: [
     {
@@ -89,6 +89,7 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const router = useRouter();
   return (
     <div
       style={{
@@ -102,6 +103,7 @@ export default function Footer() {
           <div className="flex flex-row justify-center gap-2  items-center">
             <Image
               src={Logo}
+              alt="something went wrong"
               onClick={() => router.push("/")}
               className="w-48 h-full cursor-pointer object-cover"
             />
@@ -132,7 +134,10 @@ export default function Footer() {
             <span className="h-2 text-white   font-bold text-lg">Games</span>
             <div className="flex flex-col gap-2">
               {footerLinks.games.map((item) => (
-                <span className=" text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                <span
+                  key={item.label}
+                  className=" text-[#4C525E] hover:text-gray-300 cursor-pointer"
+                >
                   {item.label}
                 </span>
               ))}
@@ -142,7 +147,10 @@ export default function Footer() {
             <span className="h-2 text-white font-bold text-lg">Casino</span>
             <div className="flex flex-col gap-2">
               {footerLinks.casino.map((item) => (
-                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                <span
+                  key={item.label}
+                  className="text-[#4C525E] hover:text-gray-300 cursor-pointer"
+                >
                   {item.label}
                 </span>
               ))}
@@ -152,7 +160,10 @@ export default function Footer() {
             <span className="h-2 text-white font-bold text-lg">Legal</span>
             <div className="flex flex-col gap-2">
               {footerLinks.legal.map((item) => (
-                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                <span
+                  key={item.label}
+                  className="text-[#4C525E] hover:text-gray-300 cursor-pointer"
+                >
                   {item.label}
                 </span>
               ))}
@@ -162,7 +173,10 @@ export default function Footer() {
             <span className="h-2 text-white font-bold text-lg">Support</span>
             <div className="flex flex-col gap-2">
               {footerLinks.support.map((item) => (
-                <span className="text-[#4C525E] hover:text-gray-300 cursor-pointer">
+                <span
+                  key={item.label}
+                  className="text-[#4C525E] hover:text-gray-300 cursor-pointer"
+                >
                   {item.label}
                 </span>
               ))}
@@ -298,7 +312,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-row justify-center gap-3 items-center">
           <Plus />
-          <Image src={require("@/assets/Ball_icon.png")} />
+          <Image alt="" src={require("@/assets/Ball_icon.png")} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"
@@ -333,4 +347,3 @@ export default function Footer() {
     </div>
   );
 }
-2.1;

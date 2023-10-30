@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "@/styles/globals.css";
 import Layout from "../components/layout";
 import { reduxWrapper, store } from "@/store";

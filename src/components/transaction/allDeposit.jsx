@@ -5,7 +5,7 @@ export default function AllDeposit() {
   return (
     <div className="flex flex-col gap-2">
       {[1, 2, 3, 4, 5].map((item) => (
-        <div className="bg-[#2F3442] p-4 rounded-lg flex flex-row">
+        <div key={item} className="bg-[#2F3442] p-4 rounded-lg flex flex-row">
           <div className="self-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,4 @@
 import ResponsibleGamlingIcon from "@/assets/svg/siderbar/ResponsibleGamling";
-import Settings from "@/assets/svg/siderbar/Setting";
 import AceJackpotSafe from "@/components/responsiblegambling/AceJackpotSafe";
 import GamblingLimits from "@/components/responsiblegambling/GamblingLimits";
 import SelfExclusion from "@/components/responsiblegambling/SelfExclusion";

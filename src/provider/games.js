@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     img: require("../assets/games/1_Skull_Fiesta.png"),
     gameURL:
@@ -33,3 +33,4 @@ export default [
     img: require("../assets/games/7_Lucky_Jungle.png"),
   },
 ];
+export default data;

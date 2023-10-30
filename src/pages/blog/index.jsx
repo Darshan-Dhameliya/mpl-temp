@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Blog from "@/assets/svg/siderbar/Blog";
 import React, { useState } from "react";
 
@@ -60,7 +61,7 @@ export default function Blogs() {
       ) : (
         <div className="grid lap:grid-cols-3 tab:grid-cols-1 gap-x-3 gap-y-4">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-            <div className="w-full ">
+            <div key={item} className="w-full ">
               <div
                 className="bg-[#212530] relative h-48 rounded-xl cursor-pointer"
                 onClick={toggleBlog}

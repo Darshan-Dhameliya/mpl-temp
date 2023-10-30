@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import AceIcon from "@/assets/svg/AceIcon";
 import PlayIcon from "@/assets/svg/PlayIcon";
 import GamePlaceholder from "@/assets/gamePlaceholder.png";
-import Image from "next/image";
 import React from "react";
 
 export default function GameCard(props) {
@@ -32,11 +32,11 @@ export default function GameCard(props) {
       {imgUrl ? (
         <img
           src={imgUrl}
-          alt="something went wrong"
           className="h-full w-full object-cover"
           objectFit="cover"
           placeholder="blur"
           blurDataURL={GamePlaceholder?.src}
+          alt="something went wrong"
         />
       ) : (
         <div className="h-full w-full flex justify-center items-center">

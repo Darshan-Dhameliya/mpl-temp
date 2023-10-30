@@ -11,7 +11,6 @@ const data = [
     title: "IMPORTANT NOTICE",
     desc: [
       "BY REGISTERING ON WWW.CASINO.COM (THE “WEBSITE”), YOU ENTER INTO A CONTRACT WITH MEDIUM RARE N.V., AND AGREE TO BE BOUND BY (I) THESE TERMS AND CONDITIONS; (II) OUR PRIVACY POLICY; (III) OUR COOKIES POLICY AND (IV) THE RULES APPLICABLE TO OUR BETTING OR GAMING PRODUCTS AS FURTHER REFERENCED IN THESE TERMS AND CONDITIONS (“TERMS AND CONDITIONS” OR “AGREEMENT”), AND THE BETTING AND/OR GAMING SPECIFIC RULES, AND ARE DEEMED TO HAVE ACCEPTED AND UNDERSTOOD ALL THE TERMS.",
-      ,
       "PLEASE READ THIS AGREEMENT CAREFULLY TO MAKE SURE YOU FULLY UNDERSTAND ITS CONTENT. IF YOU HAVE ANY DOUBTS AS TO YOUR RIGHTS AND OBLIGATIONS RESULTING FROM THE ACCEPTANCE OF THIS AGREEMENT, PLEASE CONSULT A LEGAL ADVISOR.",
     ],
   },
@@ -25,13 +24,13 @@ export default function TermsAndCondition() {
       </div>
       <div className="flex flex-col gap-4 mt-5 h-96 overflow-y-auto pe-6">
         {data.map((item, idx) => (
-          <div>
+          <div key={idx}>
             <div className="text-white text-2xl bold">
               {`${idx + 1}. ${item.title}`}
             </div>
             <div className="flex flex-col gap-5">
               {item.desc.map((item, subIdx) => (
-                <div>{`${idx + 1}.${++subIdx}. ${item}`}</div>
+                <div key={subIdx}>{`${idx + 1}.${++subIdx}. ${item}`}</div>
               ))}
             </div>
           </div>

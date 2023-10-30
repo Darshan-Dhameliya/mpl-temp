@@ -14,7 +14,7 @@ import AddBenificiary from "@/assets/svg/siderbar/AddBenificiary";
 import Profile from "@/assets/svg/siderbar/Profile";
 import ResponsibleGamling from "@/assets/svg/siderbar/ResponsibleGamling";
 
-export default [
+const data = [
   {
     title: "Profile",
     icon: (props) => <Profile {...props} />,
@@ -127,3 +127,5 @@ export default [
     ],
   },
 ];
+
+export default data;

@@ -41,7 +41,11 @@ export default function MobileView({ isOpen, onClose }) {
                   alt="something went wrong"
                 />
               </div>
-              <div className="text-center font-bold text-2xl text-white mb-3"></div>
+              <div className="text-center font-bold text-2xl text-white mb-3">
+                {step === 1
+                  ? "Registration an Account"
+                  : "Terms and Conditions"}
+              </div>
               <div className="w-full pb-7 px-4">
                 {step === 1 && (
                   <Step1 onClose={onClose} nextStep={() => setStep(2)} />

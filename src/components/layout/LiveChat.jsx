@@ -121,7 +121,7 @@ export default function LiveChat() {
       </div> */}
       <div className="h-full flex gap-2 flex-col w-full overflow-auto">
         {data.map((item) => (
-          <div className="message">
+          <div className="message" key={item.name}>
             <div className="flex gap-3 flex-row items-center">
               <div className="h-8 w-8 bg-[#3D4554] rounded-full" />
               <div>

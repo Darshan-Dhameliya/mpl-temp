@@ -87,7 +87,7 @@ const Sidebar = () => {
 
           {navigation.map((item, idx) =>
             item.children ? (
-              <SecureSection>
+              <SecureSection key={idx}>
                 <div className={`cursor-pointer overflow-hidden`}>
                   <CollapsibleDropdown
                     items={item.children}
@@ -106,6 +106,7 @@ const Sidebar = () => {
               </SecureSection>
             ) : (
               <div
+                key={idx}
                 onClick={() => {
                   setActiveRoute(item.title);
                   if (item.href) {

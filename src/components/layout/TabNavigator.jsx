@@ -72,6 +72,7 @@ export default function TabNavigator() {
         {MobileNavigation.map((item, idx) =>
           item.children ? (
             <div
+              key={idx}
               className={`cursor-pointer flex-none w-full overflow-hidden text-xl`}
             >
               <CollapsibleDropdown
@@ -80,7 +81,6 @@ export default function TabNavigator() {
                   heght: 24,
                   width: 24,
                 })}
-                key={idx}
                 title={item.title}
                 onItemClick={(props) => {
                   setActiveRoute(item.title);
@@ -96,6 +96,7 @@ export default function TabNavigator() {
             </div>
           ) : (
             <div
+              key={idx}
               onClick={() => {
                 setActiveRoute(item.title);
                 if (item.href) {
@@ -126,6 +127,7 @@ export default function TabNavigator() {
         <nav className="flex justify-between h-full">
           {tabs.map((item) => (
             <div
+              key={item.id}
               className={`${
                 activeTab === item.id
                   ? "border-t-indigo-700 border-t-4"

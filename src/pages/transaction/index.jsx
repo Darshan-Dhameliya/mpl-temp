@@ -50,6 +50,7 @@ export default function Transaction() {
         >
           {data.map((item) => (
             <button
+              key={item.id}
               className={`${
                 activeId === item.id ? " text-white  bg-[#2F3543]" : ""
               } cursor-pointer text-start py-2 ps-4 transition-all rounded-lg hover:bg-[#2F3543] hover:text-white`}

@@ -61,7 +61,7 @@ export default function Home() {
   const games = useSelector((state) => state?.app?.games);
   const banners = useSelector((state) => state?.app?.banners);
 
-  const [gamePlayURL, setgamePlayURL] = useState("");
+  const [, setgamePlayURL] = useState("");
   const [activeMenu, setactiveMenu] = useState(0);
 
   return (
@@ -135,7 +135,7 @@ export default function Home() {
           </div>
         </>
       )}
-      <Slider parentClass="" items={banners} />
+      <Slider parentClass="mt-4" items={banners} />
       <div className=" bg-[#212530] border-[#2E323D] border rounded-full w-full overflow-hidden ">
         <div className="overflow-y-auto flex gap-2 flex-row justify-between z-20  lap:p-3 mobtab:p-2">
           {menubar.map((item, idx) => (

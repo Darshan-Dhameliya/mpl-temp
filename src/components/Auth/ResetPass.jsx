@@ -38,8 +38,8 @@ export default function ResetPass({ isOpen, onClose, openRegsiter }) {
                 style={{
                   background:
                     "linear-gradient(180deg, #292D38 23.72%, #242833 118.98%)",
-                  boxShadow: "0px 14px 22px 0px #00000038",
-                  boxShadow: "0px 3px 0px 0px #3D4554 inset",
+                  boxShadow:
+                    "0px 14px 22px 0px #00000038, 0px 3px 0px 0px #3D4554 inset",
                 }}
               >
                 <div
@@ -52,6 +52,7 @@ export default function ResetPass({ isOpen, onClose, openRegsiter }) {
                     <Image
                       src={require("@/assets/auth_bg.svg")}
                       className="w-100 h-100 object-cover absolute -z-10 inset-0"
+                      alt="something went wrong"
                     />
                     <div className="flex w-full flex-col self-end gap-3 items-center">
                       <div className="text-white text-2xl font-bold">
@@ -70,6 +71,7 @@ export default function ResetPass({ isOpen, onClose, openRegsiter }) {
                       <div className="flex  flex-row gap-3 items-center">
                         <Plus className="h-8 w-8" />
                         <Image
+                          alt="something went wrong"
                           src={require("@/assets/Ball_icon.png")}
                           className="w-14 object-contain"
                         />
