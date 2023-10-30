@@ -1,9 +1,6 @@
-// components/Carousel.js
-
+/* eslint-disable @next/next/no-img-element */
 import { useState, useRef } from "react";
-import GameCard from "../@core/GameCard";
 import useDeviceType from "@/helper/useDeviceType";
-import Image from "next/image";
 
 const Slider = ({ items, parentClass }) => {
   const carouselRef = useRef(null);
@@ -58,6 +55,24 @@ const Slider = ({ items, parentClass }) => {
     }
   };
 
+  // const data={
+  //   "_id": "65374ca2083698ef55c8ce4b",
+  //   "name": "Prize Giveway",
+  //   "actionUrl": "https://example.com/action",
+  //   "location": "home",
+  //   "status": 1,
+  //   "bannerType": 1,
+  //   "appType": 0,
+  //   "clickCount": 100,
+  //   "clickUrl": "https://example.com/click",
+  //   "createdAt": "2023-10-24T04:48:34.989Z",
+  //   "updatedAt": "2023-10-24T04:49:35.513Z",
+  //   "__v": 0,
+  //   "image": "1698122975033-362265477.jpg",
+  //   "imageUrl": "https://api-ace-jackpot.bytecodestudio.com/uploads/banners/1698122975033-362265477.jpg",
+  //   "id": "65374ca2083698ef55c8ce4b"
+  // }
+
   return (
     <div className={parentClass}>
       <div className="relative h-full mb-4 w-full px-6">
@@ -67,11 +82,15 @@ const Slider = ({ items, parentClass }) => {
         <div className="h-full flex overflow-hidden" ref={carouselRef}>
           {items.map((item, index) => (
             <div
-              className="flex-none h-56 px-2 rounded-xl mob:w-full tab:w-1/2 lap:w-1/3 xl:w-1/3 " // Adjusted width here
+              className="flex-none h-56 mx-2 rounded-xl overflow-hidden mob:w-full tab:w-1/2 lap:w-1/3 xl:w-1/3 " // Adjusted width here
               key={index}
               data-index={index}
             >
-              <Image src={item?.img} className="h-full w-full " />
+              <img
+                alt=""
+                src={item?.imageUrl}
+                className="h-full w-full object-cover "
+              />
             </div>
           ))}
         </div>

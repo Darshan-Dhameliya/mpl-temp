@@ -54,6 +54,7 @@ const Carousel = ({ items, title }) => {
     }
   };
 
+  console.log(items);
   return (
     <div className="carousel-container p-4">
       <div className="flex flex-row justify-between items-center ">
@@ -77,14 +78,15 @@ const Carousel = ({ items, title }) => {
       >
         {items.map((item, index) => (
           <div
-            className="flex-none w-1/2 mob:w-1/2  tab:w-1/4 lap:w-1/5 xl:w-1/5 " // Adjusted width here
+            className="flex-none w-1/2 mob:w-1/2  tab:w-1/4 lap:w-1/5 xl:w-1/5 py-2" // Adjusted width here
             key={index}
             data-index={index}
           >
             <GameCard
               onClick={handleOnClick(item?.gameURL)}
-              imgUrl={item?.img}
-              index={index}
+              imgUrl={item?.imageUrl}
+              name={item?.name}
+              companyName={item?.companyName}
             />
           </div>
         ))}

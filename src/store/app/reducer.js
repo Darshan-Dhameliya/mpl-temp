@@ -1,25 +1,37 @@
+import { AppAction } from "./types";
+
 const initialState = {
   showLiveChat: false,
   showDeposit: false,
   showWithdraw: false,
+  games: [],
+  banners: [],
 };
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SHOWLIVECHAT":
+    case AppAction.SHOWLIVECHAT:
       return { ...state, showLiveChat: true };
-    case "HIDELIVECHAT":
+    case AppAction.HIDELIVECHAT:
       return { ...state, showLiveChat: false };
 
-    case "SHOWDEPOSIT":
+    case AppAction.SHOWDEPOSIT:
       return { ...state, showDeposit: true };
-    case "HIDEDEPOSIT":
+    case AppAction.HIDEDEPOSIT:
       return { ...state, showDeposit: false };
 
-    case "SHOWWITHDRAW":
+    case AppAction.SHOWWITHDRAW:
       return { ...state, showWithdraw: true };
-    case "HIDEWITHDRAW":
+    case AppAction.HIDEWITHDRAW:
       return { ...state, showWithdraw: false };
+
+    case AppAction.SET_GAMES_DATA: {
+      return { ...state, games: action.payload || [] };
+    }
+
+    case AppAction.SET_BANNERS_DATA: {
+      return { ...state, banners: action.payload || [] };
+    }
 
     default:
       return state;

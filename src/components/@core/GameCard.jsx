@@ -1,47 +1,47 @@
+import AceIcon from "@/assets/svg/AceIcon";
+import PlayIcon from "@/assets/svg/PlayIcon";
+import GamePlaceholder from "@/assets/gamePlaceholder.png";
 import Image from "next/image";
 import React from "react";
 
 export default function GameCard(props) {
-  const { width, imgUrl, onClick } = props;
+  const { width, imgUrl, onClick, name, companyName } = props;
   return (
     <div
       role="button"
       style={{
-        border: "2px solid #444B5B",
         background: "linear-gradient(180deg, #333947 0%, #2C3240 100%)",
-        // height: 250,
         width: width || "calc(100% - 8px)", // Adjust the width and margin accordingly
         margin: "4px", // Add margin to separate the cards
       }}
       onClick={onClick}
-      className="overflow-hidden cursor-pointer flex rounded-xl justify-center items-center"
+      className="group h-full hover:-translate-y-2 duration-300 transition-all relative overflow-hidden cursor-pointer flex rounded-xl justify-center items-center"
     >
+      <div
+        className="group-hover:opacity-100 delay-200 duration-500 opacity-0 text-white flex flex-col justify-between transition-all  absolute inset-0 z-10"
+        style={{
+          background: "rgba(47,50,59,0.6)",
+        }}
+      >
+        <div className="mt-5 ml-4">{name}</div>
+        <div className="flex justify-center">
+          <PlayIcon height={24} width={24} />
+        </div>
+        <div className="mb-3 text-center">{companyName}</div>
+      </div>
       {imgUrl ? (
-        <Image
+        <img
           src={imgUrl}
           alt="something went wrong"
           className="h-full w-full object-cover"
           objectFit="cover"
+          placeholder="blur"
+          blurDataURL={GamePlaceholder?.src}
         />
       ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="134"
-          height="134"
-          viewBox="0 0 134 134"
-          fill="none"
-        >
-          <path
-            d="M0.0253906 82.1746C0.210273 71.7348 3.4601 63.6863 10.0666 57.0593C28.5877 38.5053 47.128 19.9691 65.6875 1.45065C66.9201 0.2181 66.9694 0.2181 68.2266 1.4753C86.6656 19.9088 105.106 38.3423 123.548 56.7758C128.917 62.1168 132.319 68.5097 133.429 75.9954C136.107 94.0974 124.534 110.281 107.8 114.159C95.5851 116.986 84.7674 113.942 75.7534 105.149C70.9834 100.49 69.8823 94.6562 71.2833 88.3044C71.758 86.4274 72.7468 84.72 74.1387 83.3742C76.6244 80.8187 79.1552 78.3043 81.6737 75.7776C83.1733 74.2739 83.1856 73.2838 81.6737 71.7883C77.4118 67.5236 73.1499 63.2604 68.888 58.9985C67.4213 57.5317 66.423 57.5153 64.9685 58.9615C60.6519 63.2727 56.3393 67.5853 52.0308 71.8992C50.6956 73.2386 50.712 74.315 52.0308 75.6708C54.8739 78.5714 57.7828 81.4227 60.5149 84.4219C62.3021 86.3858 62.8814 88.8961 63.0581 91.5255C63.5716 99.1263 59.9027 104.467 54.0194 108.715C33.9904 123.153 5.7773 112.2 0.789573 87.9593C0.325312 85.7038 0.181514 83.3825 0.0253906 82.1746Z"
-            fill="#212530"
-            fill-opacity="0.47"
-          />
-          <path
-            d="M66.9402 133.703C60.3091 133.703 53.6793 133.703 47.0509 133.703C45.6253 133.703 44.9967 133.292 44.8611 132.212C44.6762 130.926 45.1775 130.268 46.5702 129.837C55.7979 126.961 61.8374 120.926 64.6107 111.649C65.1325 109.894 66.3691 109.163 67.8687 109.755C68.7356 110.096 69.0314 110.831 69.2533 111.645C70.4436 115.972 72.7295 119.919 75.8904 123.105C79.0512 126.291 82.9802 128.608 87.2978 129.833C88.0867 130.059 88.7892 130.342 88.9823 131.246C89.3151 132.799 88.3537 133.748 87.0472 133.736C80.9872 133.67 74.9271 133.703 68.8671 133.703H66.9402Z"
-            fill="#212530"
-            fill-opacity="0.47"
-          />
-        </svg>
+        <div className="h-full w-full flex justify-center items-center">
+          <AceIcon height={96} width={96} />
+        </div>
       )}
     </div>
   );
